@@ -13,10 +13,10 @@ $Variable=0;
  
  
 while(strtoupper($Categoria)==strtoupper($Array[$Variable])){
+if(strtoupper($Categoria)==strtoupper($Array[$Variable])){
 echo "PASSED PRUEBA 2";
 $Variable+=1;
-}else{
-if(empty($Array[$Variable])==true){
+}elseif(empty($Array[$Variable])==true){
 echo "PASSED PRUEBA 2";	
 }else{	
 echo "FAILED PRUEBA 2";	 

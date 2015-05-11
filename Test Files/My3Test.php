@@ -18,11 +18,10 @@ $Variable=0;
  
  
 while($Rango>=strtoupper($Array->$Rango[$Variable])){
-
+if($Rango>=strtoupper($Array->$Rango[$Variable])){
 echo "PASSED PRUEBA 1";
-$Variable+=1;
-else{
-if(empty($Array[$Variable])==true){
+$Variable+=1;}
+elseif(empty($Array[$Variable])==true){
 echo "PASSED PRUEBA 1";	
 }else{	
 echo "FAILED PRUEBA 1";	 
