@@ -26,10 +26,11 @@ if (mysql_num_rows($result) > 0) {
     while ($row = mysql_fetch_array($result)) {
         // temp user array
         $productos = array();
-        $productos["id_producto"] = $row["id_producto"];
+        $productos["id_productos"] = $row["id_productos"];
         $productos["nombre_producto"] = $row["nombre_producto"];
         $productos["descripcion_producto"] = $row["descripcion_producto"];
         $productos["precio_producto"] = $row["precio_producto"];
+        $productos["imagen_producto1"] = $row["imagen_producto1"];
 
         //$product["created_at"] = $row["created_at"];
         //$product["updated_at"] = $row["updated_at"];
