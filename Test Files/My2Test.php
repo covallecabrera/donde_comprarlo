@@ -14,12 +14,13 @@ $Variable=0;
  
 while(strtoupper($Categoria)==strtoupper($Array[$Variable])){
 if(strtoupper($Categoria)==strtoupper($Array[$Variable])){
-echo "PASSED PRUEBA 2";
 $Variable+=1;
 }elseif(empty($Array[$Variable])==true){
 echo "PASSED PRUEBA 2";	
+$this->assertEquals("a","a");
 }else{	
 echo "FAILED PRUEBA 2";	 
+$this->assertEquals("a","b");
 }    
 }     
 

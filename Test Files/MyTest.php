@@ -15,11 +15,12 @@ $Variable=0;
 while(strstr(strtoupper($Busqueda), strtoupper($Array[$Variable]))==true){
 
 if(strstr(strtoupper($Busqueda), strtoupper($Array[$Variable]))==true){    
-echo "PASSED PRUEBA 1";
 $Variable+=1;
 }elseif(empty($Array[$Variable])==true){
-echo "PASSED PRUEBA 1";	
-}else{	
+echo "PASSED PRUEBA 1";
+$this->assertEquals("a","a");
+}else{
+$this->assertEquals("a","b");    
 echo "FAILED PRUEBA 1";	 
 }    
 }     
