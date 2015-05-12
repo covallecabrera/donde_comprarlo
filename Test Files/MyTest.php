@@ -17,7 +17,7 @@ while(strstr(strtoupper($Busqueda), strtoupper($Array[$Variable]))==true){
 if(strstr(strtoupper($Busqueda), strtoupper($Array[$Variable]))==true){    
 $Variable+=1;
 }elseif(empty($Array[$Variable])==true){
-echo "PASSED PRUEBA 1";
+echo "PASSED PRUEBA";
 $this->assertEquals("a","a");
 }else{
 $this->assertEquals("a","b");    
