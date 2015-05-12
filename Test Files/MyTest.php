@@ -1,12 +1,12 @@
 <?php
 
-require '';
+require 'busqueda.php';
 
 class MyTest extends PHPUnit_Framework_TestCase{
  
     
 public function testbusqueda(){
-$Busqueda='';//INGRESAR PALABRA A BUSCAR
+$Busqueda='botin';//INGRESAR PALABRA A BUSCAR
  
 $Array=jax($Busqueda);//cambiar jax por la funcion
 $Variable=0;
