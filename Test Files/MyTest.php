@@ -1,6 +1,6 @@
 <?php
 
-require 'busqueda.php';
+require_once '/Applications/MAMP/htdocs/donde_comprarlo/busqueda.php';
 
 class MyTest extends PHPUnit_Framework_TestCase{
  

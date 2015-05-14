@@ -5,34 +5,30 @@
  */
 
 // array for JSON response
-  $response = array();
+$response = array();
 
 
 // include db connect class
 require_once 'db_connect.php';
 
 // connecting to db
- $db = new DB_CONNECT();
-$buscar=$_GET["buscar"];
-  
+$db = new DB_CONNECT();
 
 // get all products from products table
-$result = mysql_query("SELECT * FROM productos where nombre_producto like '%".$buscar."%' ") or die(mysql_error());
+$result = mysql_query("SELECT * FROM categoria") or die(mysql_error());
 
 // check for empty result
 if (mysql_num_rows($result) > 0) {
     // looping through all results
     // products node
-    $response["productos"] = array();
-
+    $response["categoria"] = array();
+ 
     while ($row = mysql_fetch_array($result)) {
         // temp user array
-        $productos = array();
-        $productos["id_productos"] = $row["id_productos"];
-        $productos["nombre_producto"] = $row["nombre_producto"];
-        $productos["descripcion_producto"] = $row["descripcion_producto"];
-        $productos["precio_producto"] = $row["precio_producto"];
-        $productos["imagen_producto1"] = $row["imagen_producto1"];
+        $categoria = array();
+        $categoria["id_categoria"] = $row["id_categoria"];
+        $categoria["nombre_categoria"] = $row["nombre_categoria"];
+
 
         //$product["created_at"] = $row["created_at"];
         //$product["updated_at"] = $row["updated_at"];
@@ -40,7 +36,7 @@ if (mysql_num_rows($result) > 0) {
 
 
         // push single product into final response array
-        array_push($response["productos"], $productos);
+        array_push($response["categoria"],  $categoria);
     }
     // success
     $response["success"] = 1;
@@ -50,9 +46,9 @@ if (mysql_num_rows($result) > 0) {
 } else {
     // no products found
     $response["success"] = 0;
-    $response["message"] = "No se encontraron Productos";
+    $response["message"] = "No se encontraron categorias";
 
     // echo no users JSON
-    echo json_encode($response);  
+    echo json_encode($response);
 }
 ?>

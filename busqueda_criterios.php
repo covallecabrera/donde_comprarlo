@@ -20,7 +20,10 @@ $rango=$_GET["rango"];
 $precio_max=$_GET["precio_max"];
 
 // get all products from products table
-$result = mysql_query("SELECT * FROM productos where nombre_producto like '%".$buscar."%' ") or die(mysql_error());
+$result = mysql_query("SELECT * FROM productos p INNER JOIN categoria c ON c.id_categoria = p.categoria_id_categoria"
+        . " INNER JOIN marca m ON m.id_marca = m.id_marca=p.marca_id_marca where p.nombre_producto "
+        . "like '%".$buscar."%' AND c.nombre_categoria = '%".$categoria."%' AND m.nombre_marca = '%".$marca."%'"
+        . " AND p.precio_producto < '%".$precio_max."%' ") or die(mysql_error());
 /*
  SELECT * FROM `productos` p 
 INNER JOIN `categoria` c 
