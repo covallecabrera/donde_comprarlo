@@ -5,52 +5,41 @@
  */
 
 // array for JSON response
-$response = array();
+  $response = array();
 
 
 // include db connect class
 require_once 'db_connect.php';
 
+
 // connecting to db
-$db = new DB_CONNECT();
+ $db = new DB_CONNECT();
+
 $buscar=$_GET["buscar"];
-$categoria=$_GET["categoria"];
-$marca=$_GET["marca"];
-//$rango=$_GET["rango"];
-$precio_max=$_GET["precio_max"];
-/*
-$buscar="bota gacel puma";
-$categoria="Botas";
-$marca="Gacel";
-//$rango=$_GET["rango"];
-$precio_max=100000;
-*/
+$buscar1=$_GET["buscar1"];
+
 // get all products from products table
-$result = mysql_query("SELECT * FROM productos  "
-        . " INNER JOIN categoria  "
-        . " ON categoria.id_categoria = productos.categoria_id_categoria "
-        . " INNER JOIN marca  "
-        . " ON marca.id_marca = productos.marca_id_marca "
-        . " WHERE productos.nombre_producto like '%".$buscar."%' "
-        . " AND categoria.id_categoria = ".$categoria." "
-        . " AND marca.id_marca = ".$marca.""
-        . " AND productos.precio_producto < ".$precio_max." ") or die(mysql_error());
-/*
- SELECT * FROM productos p  INNER JOIN categoria c 
-       ON c.id_categoria = p.categoria_id_categoria 
-         INNER JOIN marca m 
-         ON m.id_marca = p.marca_id_marca 
-        WHERE p.nombre_producto like ''
-       AND c.nombre_categoria = 'Botas'
-       AND m.nombre_marca = 'Gacel'
-      AND p.precio_producto < 100000
+$result = mysql_query("SELECT * FROM categoria "
+        . " INNER JOIN productos  on categoria.id_categoria=productos.categoria_id_categoria"
+        . " INNER JOIN marca  on marca.id_marca=productos.marca_id_marca"
+        . " WHERE categoria.id_categoria = ".$buscar." AND marca.id_marca = ".$buscar1." ") or die(mysql_error());
+/* 
+SELECT * FROM `productos` p 
+INNER JOIN `categoria` c 
+ON c.id_categoria = p.categoria_id_categoria
+INNER JOIN `marca`m
+WHERE c.id_categoria = 1
+AND
+m.id_marca = 1
  */
+
+
 // check for empty result
 if (mysql_num_rows($result) > 0) {
     // looping through all results
     // products node
     $response["productos"] = array();
-
+ 
     while ($row = mysql_fetch_array($result)) {
         // temp user array
         $productos = array();
@@ -76,9 +65,11 @@ if (mysql_num_rows($result) > 0) {
 } else {
     // no products found
     $response["success"] = 0;
-    $response["message"] = "No se encontraron Productos";
+    $response["message"] = "No se encontraron productos";
 
     // echo no users JSON
     echo json_encode($response);
 }
 ?>
+
+
