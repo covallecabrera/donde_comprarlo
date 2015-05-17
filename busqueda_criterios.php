@@ -26,7 +26,8 @@ $marca="Gacel";
 $precio_max=100000;
 */
 // get all products from products table
-$result = mysql_query("SELECT * FROM productos  "
+if ($marca == '0'){
+ $result = mysql_query("SELECT * FROM productos  "
         . " INNER JOIN categoria  "
         . " ON categoria.id_categoria = productos.categoria_id_categoria "
         . " INNER JOIN marca  "
@@ -34,7 +35,18 @@ $result = mysql_query("SELECT * FROM productos  "
         . " WHERE productos.nombre_producto like '%".$buscar."%' "
         . " AND categoria.id_categoria = ".$categoria." "
         . " OR marca.id_marca = ".$marca.""
+        . " AND productos.precio_producto < ".$precio_max." ") or die(mysql_error());   
+} else{
+$result = mysql_query("SELECT * FROM productos  "
+        . " INNER JOIN categoria  "
+        . " ON categoria.id_categoria = productos.categoria_id_categoria "
+        . " INNER JOIN marca  "
+        . " ON marca.id_marca = productos.marca_id_marca "
+        . " WHERE productos.nombre_producto like '%".$buscar."%' "
+        . " AND categoria.id_categoria = ".$categoria." "
+        . " AND marca.id_marca = ".$marca.""
         . " AND productos.precio_producto < ".$precio_max." ") or die(mysql_error());
+}
 /*
  SELECT * FROM productos p  INNER JOIN categoria c 
        ON c.id_categoria = p.categoria_id_categoria 
