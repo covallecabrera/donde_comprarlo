@@ -19,7 +19,7 @@ $buscar=$_GET["buscar"];
   
 
 // get all products from products table
-$result = mysql_query("SELECT marca.id_marca, marca.nombre_marca FROM categoria "
+$result = mysql_query("SELECT DISTINCT marca.id_marca, marca.nombre_marca FROM categoria "
         . " INNER JOIN productos  on categoria.id_categoria=productos.categoria_id_categoria"
         . " INNER JOIN marca  on marca.id_marca=productos.marca_id_marca"
         . " WHERE categoria.id_categoria = ".$buscar." ") or die(mysql_error());
