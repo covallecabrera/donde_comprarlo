@@ -34,8 +34,8 @@ if ($marca == '0'){
         . " ON marca.id_marca = productos.marca_id_marca "
         . " WHERE productos.nombre_producto like '%".$buscar."%' "
         . " AND categoria.id_categoria = ".$categoria." "
-        . " OR marca.id_marca = ".$marca.""
-        . " AND productos.precio_producto < ".$precio_max." ") or die(mysql_error());   
+         . "AND productos.precio_producto < ".$precio_max.""
+        . " OR marca.id_marca = ".$marca." ") or die(mysql_error());   
 } else{
 $result = mysql_query("SELECT * FROM productos  "
         . " INNER JOIN categoria  "
