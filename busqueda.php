@@ -17,7 +17,9 @@ $buscar=$_GET["buscar"];
   
 
 // get all products from products table
-$result = mysql_query("SELECT * FROM productos where nombre_producto like '%".$buscar."%' ") or die(mysql_error());
+$result = mysql_query("SELECT * FROM productos INNER JOIN marca ON marca.id_marca = productos.marca_id_marca"
+        . " where nombre_producto like '%".$buscar."%' "
+        . " ORDER BY marca.nombre_marca ASC , productos.nombre_producto ASC ") or die(mysql_error());
 
 // check for empty result
 if (mysql_num_rows($result) > 0) {

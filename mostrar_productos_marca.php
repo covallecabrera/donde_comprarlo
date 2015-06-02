@@ -22,7 +22,8 @@ $buscar1=$_GET["buscar1"];
 $result = mysql_query("SELECT * FROM categoria "
         . " INNER JOIN productos  on categoria.id_categoria=productos.categoria_id_categoria"
         . " INNER JOIN marca  on marca.id_marca=productos.marca_id_marca"
-        . " WHERE categoria.id_categoria = ".$buscar." AND marca.id_marca = ".$buscar1." ") or die(mysql_error());
+        . " WHERE categoria.id_categoria = ".$buscar." AND marca.id_marca = ".$buscar1.""
+        . " ORDER BY productos.nombre_producto ASC ") or die(mysql_error());
 /* 
 SELECT * FROM `productos` p 
 INNER JOIN `categoria` c 
