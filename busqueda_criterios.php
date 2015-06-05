@@ -18,7 +18,7 @@ $categoria=$_GET["categoria"];
 $marca=$_GET["marca"];
 //$rango=$_GET["rango"];
 $precio_max=$_GET["precio_max"];
-
+$orden=$_GET["orden"];
 // Obteniendo los datos de la base de datos.
 if ($categoria == '0'){
  $result = mysql_query("SELECT * FROM productos  "
@@ -28,8 +28,8 @@ if ($categoria == '0'){
         . " ON marca.id_marca = productos.marca_id_marca "
         . " WHERE productos.nombre_producto like '%".$buscar."%' "
         . " AND productos.precio_producto < ".$precio_max." "
-        . " "
-        . " OR categoria.id_categoria = ".$categoria." ") or die(mysql_error());   
+        . " OR categoria.id_categoria = ".$categoria." "
+         . " ORDER BY productos.precio_producto ".$orden." ") or die(mysql_error());   
 } elseif ($marca == '0'){
 $result = mysql_query("SELECT * FROM productos  "
         . " INNER JOIN categoria  "
@@ -39,7 +39,8 @@ $result = mysql_query("SELECT * FROM productos  "
         . " WHERE productos.nombre_producto like '%".$buscar."%' "
         . " AND productos.precio_producto < ".$precio_max." "
         . " AND categoria.id_categoria = ".$categoria." "
-        . " OR marca.id_marca = ".$marca."") or die(mysql_error());
+        . " OR marca.id_marca = ".$marca.""
+        . " ORDER BY productos.precio_producto ".$orden." ") or die(mysql_error());
 }else{
     $result = mysql_query("SELECT * FROM productos  "
         . " INNER JOIN categoria  "
@@ -49,7 +50,8 @@ $result = mysql_query("SELECT * FROM productos  "
         . " WHERE productos.nombre_producto like '%".$buscar."%' "
         . " AND productos.precio_producto < ".$precio_max." "
         . " AND categoria.id_categoria = ".$categoria." "
-        . " AND marca.id_marca = ".$marca."") or die(mysql_error());
+        . " AND marca.id_marca = ".$marca.""
+            . " ORDER BY productos.precio_producto ".$orden."") or die(mysql_error());
 }
 /*
  SELECT * FROM productos p  INNER JOIN categoria c 

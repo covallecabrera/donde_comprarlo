@@ -17,12 +17,14 @@ require_once 'db_connect.php';
 
 $buscar=$_GET["buscar"];
 $buscar1=$_GET["buscar1"];
-
+$texto=$_GET["texto"];
 // get all products from products table
 $result = mysql_query("SELECT * FROM categoria "
         . " INNER JOIN productos  on categoria.id_categoria=productos.categoria_id_categoria"
         . " INNER JOIN marca  on marca.id_marca=productos.marca_id_marca"
-        . " WHERE categoria.id_categoria = ".$buscar." AND marca.id_marca = ".$buscar1.""
+        . " WHERE productos.nombre_producto like '%".$texto."%'"
+        . " AND marca.id_marca = ".$buscar1.""
+        . " AND categoria.id_categoria = ".$buscar." "
         . " ORDER BY productos.nombre_producto ASC ") or die(mysql_error());
 /* 
 SELECT * FROM `productos` p 
