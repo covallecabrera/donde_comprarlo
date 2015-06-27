@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Following code will list all the products
+ * Following code will list all the imagenes de producto
  */
 
 // array for JSON response
@@ -19,29 +19,23 @@ $buscar=$_GET["buscar"];
   
 
 // get all products from products table
-$result = mysql_query("SELECT DISTINCT marca.id_marca, marca.nombre_marca 
-FROM marca
-INNER JOIN productos ON productos.marca_id_marca = marca.id_marca
-INNER JOIN sub_categoria on productos.sub_categoria_id_sub_categoria = sub_categoria.id_sub_categoria
-WHERE sub_categoria.id_sub_categoria = ".$buscar." ") or die(mysql_error());
-/*
- SELECT m.nombre_marca FROM categoria c 
-INNER JOIN productos p on c.id_categoria = p.categoria_id_categoria
-INNER JOIN marca m on m.id_marca=p.marca_id_marca
-WHERE c.id_categoria = 2
-*/
+$result = mysql_query("SELECT *
+from imagen
+INNER JOIN productos on imagen.productos_id_productos = productos.id_productos
+WHERE productos.id_productos = ".$buscar." ") or die(mysql_error());
+
 
 // check for empty result
 if (mysql_num_rows($result) > 0) {
     // looping through all results
     // products node
-    $response["marca"] = array();
+    $response["imagenes"] = array();
 
     while ($row = mysql_fetch_array($result)) {
         // temp user array
-        $marca = array();
-        $marca["id_marca"] = $row["id_marca"];
-        $marca["nombre_marca"] = $row["nombre_marca"];
+        $imagenes = array();
+        $imagenes["id_imagen"] = $row["id_imagen"];
+        $imagenes["url_imagen"] = $row["url_imagen"];
 
         //$product["created_at"] = $row["created_at"];
         //$product["updated_at"] = $row["updated_at"];
@@ -49,7 +43,7 @@ if (mysql_num_rows($result) > 0) {
 
 
         // push single product into final response array
-        array_push($response["marca"], $marca);
+        array_push($response["imagenes"], $imagenes);
     }
     // success
     $response["success"] = 1;
@@ -59,7 +53,7 @@ if (mysql_num_rows($result) > 0) {
 } else {
     // no products found
     $response["success"] = 0;
-    $response["message"] = "No se encontraron Marcas";
+    $response["message"] = "No se encontraron Imagenes";
 
     // echo no users JSON
     echo json_encode($response);  

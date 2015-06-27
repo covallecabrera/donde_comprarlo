@@ -15,7 +15,7 @@ require_once 'db_connect.php';
 $db = new DB_CONNECT();
 
 // get all products from products table
-$result = mysql_query("SELECT * FROM categoria ") or die(mysql_error());
+$result = mysql_query("SELECT * FROM sub_categoria ") or die(mysql_error());
 
 // check for empty result
 if (mysql_num_rows($result) > 0) {
@@ -26,8 +26,8 @@ if (mysql_num_rows($result) > 0) {
     while ($row = mysql_fetch_array($result)) {
         // temp user array
         $categoria = array();
-        $categoria["id_categoria"] = $row["id_categoria"];
-        $categoria["nombre_categoria"] = $row["nombre_categoria"];
+        $categoria["id_sub_categoria"] = $row["id_sub_categoria"];
+        $categoria["nombre_sub_categoria"] = $row["nombre_sub_categoria"];
 
 
         //$product["created_at"] = $row["created_at"];

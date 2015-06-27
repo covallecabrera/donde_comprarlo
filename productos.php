@@ -15,10 +15,37 @@ require_once 'db_connect.php';
 $db = new DB_CONNECT();
 
 // get all products from products table
-$result = mysql_query("SELECT * FROM productos "
-        . " INNER JOIN marca ON marca.id_marca=productos.marca_id_marca"
-        . " ORDER BY marca.nombre_marca ASC, productos.nombre_producto ASC") or die(mysql_error());
+$result = mysql_query("SELECT  *
+         FROM productos 
+         INNER JOIN sub_categoria ON sub_categoria.id_sub_categoria = productos.sub_categoria_id_sub_categoria
+         INNER JOIN categoria ON categoria.id_categoria = sub_categoria.categoria_id_categoria
+         INNER JOIN marca on marca.id_marca = productos.marca_id_marca
+         INNER JOIN imagen on imagen.productos_id_productos = productos.id_productos
+         INNER JOIN tienda_has_productos on tienda_has_productos.productos_id_productos = productos.id_productos
+          INNER JOIN tienda ON tienda.id_tienda = tienda_has_productos.tienda_id_tienda
+          INNER JOIN tienda_sucursal ON tienda_sucursal.tienda_id_tienda = tienda.id_tienda
+          GROUP BY productos.id_productos
+         ORDER BY productos.id_productos ASC") or die(mysql_error());
 
+
+/*
+ SELECT DISTINCT productos.id_productos,productos.nombre_producto,productos.descripcion_producto, 
+       precio_sucursal.precio_sucursal,
+       imagen.url_imagen
+         FROM productos 
+         INNER JOIN categoria ON categoria.id_categoria = productos.categoria_id_categoria
+         INNER JOIN marca on marca.id_marca = productos.marca_id_marca
+         INNER JOIN imagen on imagen.productos_id_productos = productos.id_productos
+         INNER JOIN tienda_sucursal_has_productos on tienda_sucursal_has_productos.productos_id_productos = productos.id_productos
+         INNER JOIN tienda_sucursal on tienda_sucursal.id_sucursal=tienda_sucursal_has_productos.tienda_sucursal_id_sucursal
+         INNER JOIN tienda on tienda.id_tienda = tienda_sucursal.tienda_id_tienda
+         INNER JOIN precio_sucursal on precio_sucursal.id_precio_sucursal=tienda_sucursal_has_productos.precio_sucursal_id_precio_sucursal
+         WHERE productos.nombre_producto like '%".$texto."%'
+         AND marca.id_marca = ".$buscar1."
+         AND categoria.id_categoria = ".$buscar." 
+         GROUP BY productos.id_productos
+         ORDER BY productos.id_productos ASC
+ */
 // check for empty result
 if (mysql_num_rows($result) > 0) {
     // looping through all results
@@ -32,7 +59,7 @@ if (mysql_num_rows($result) > 0) {
         $productos["nombre_producto"] = $row["nombre_producto"];
         $productos["descripcion_producto"] = $row["descripcion_producto"];
         $productos["precio_producto"] = $row["precio_producto"];
-        $productos["imagen_producto1"] = $row["imagen_producto1"];
+        $productos["url_imagen"] = $row["url_imagen"];
 
         //$product["created_at"] = $row["created_at"];
         //$product["updated_at"] = $row["updated_at"];
