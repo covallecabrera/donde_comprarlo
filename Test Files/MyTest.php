@@ -1,7 +1,7 @@
 <?php
 
-require_once 'C:\Users\jbrun_000\Documents\Proyecto\donde_comprarlo\busqueda.php';
-require_once 'C:\Users\jbrun_000\Documents\Proyecto\donde_comprarlo\busqueda_criterios.php';
+require_once '/Applications/MAMP/htdocs/donde_comprarlo/busqueda.php';
+require_once '/Applications/MAMP/htdocs/donde_comprarlo/busqueda_criterios.php';
 
 
 class MyTest extends PHPUnit_Framework_TestCase{
