@@ -55,14 +55,13 @@ Released   : 20090927
         <div id="content">
             <div class="post greenbox">
                 <div class="title">
-                    <h1 id="hola">Validacion Empresa</h1>
+                    <h1 id="hola">Empresa</h1>
                 </div>
                 <!-- Tabla que muestra los registros de la base de datos -->
 
         <?php require_once('db_conexion.php'); //importamos el archivo de conexión 
         $result = mysqli_query($con,"select * FROM empresa 
-                INNER JOIN imagen_empresa_validacion ON empresa.id_empresa = imagen_empresa_validacion.empresa_id_empresa
-                where estado_empresa = 'Pendiente' or estado_empresa = 'Rechazada' ");//Realizamos la seccion de todos los registros de empresa y sus imagenes.
+                INNER JOIN imagen_empresa_validacion ON empresa.id_empresa = imagen_empresa_validacion.empresa_id_empresa");//Realizamos la seccion de todos los registros de empresa y sus imagenes.
 
                 ?>
 
@@ -73,10 +72,7 @@ Released   : 20090927
                         <th>Direccion</th>
                         <th>Correo</th>
                         <th>Estado Validación</th>
-                        <th> Foto </th>
-                        <th> Validar </th>
-                        <th> Rechazar </th>
-
+                        <th>Log Correos</th>
 
                     </tr>
 
@@ -90,10 +86,7 @@ Released   : 20090927
                             <td><?php  echo $row['direccion_empresa'] ?></td>
                             <td><?php  echo $row['correo_empresa'] ?></td>
                             <td><?php  echo $row['estado_empresa'] ?></td>
-                            <td><a href="ver_imagen_empresa.php?id=<?php echo $row['id_imagen'] ?>">Ver</a></td> 
-                            <td><a href="cambiar_estado_empresa.php?id=<?php echo $row['id_empresa'].'&'."validacion=valida" ?>">Validar Empresa</a></td> 
-                            <td><a href="cambiar_estado_empresa.php?id=<?php echo $row['id_empresa'].'&'."validacion=no_valida" ?>">Rechazar Empresa</a></td> 
-
+                            <td><a href="log_empresas.php?id=<?php echo $row['id_empresa'] ?>">Ver Log Empresa</a></td> 
 
                         </tr>
             <?php } //Fin del Ciclo
@@ -101,9 +94,12 @@ Released   : 20090927
                 ?>
             </table>
 
-
             <!-- Fin de la tabla -->
-
+            <form method="get" action="validar_empresa.php">
+                            
+             <input type="submit" value="Validar Empresas" name="validar empresas" />
+                            
+            </form>
 <!--
     <script type="text/javascript">
         
@@ -164,5 +160,6 @@ Released   : 20090927
     </script>
 -->
 
+                        
 </body>
 </html>

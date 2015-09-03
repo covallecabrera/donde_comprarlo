@@ -21,11 +21,20 @@ Released   : 20090927
     </head>
     <body>
         <!-- start header -->
+<script type="text/javascript">
+                // window.history.back();
+                function refrescar(){
+                    window.location.replace(document.referrer);
+                }
+                
+            </script>
 
         <?php
         require_once ('db_conexion.php');
         require_once('db_conexion2.php');
         $result = mysqli_query($con2, "Select * from productos"); //Realizamos la seccion de todos los registros de la tabla de las imagenes.
+        
+
         ?>
 
         <div id="header">
@@ -35,11 +44,13 @@ Released   : 20090927
             </div>
             <div id="menu">
                 <ul>
-                    <li><a href="index.php">Inicio</a></li>
-                    <li><a href="url.php">Ingresar URL</a></li>
-                    <li class="current_page_item"><a href="Productos.php">Productos</a></li>
-                    <li><a href="#">Acerca de</a></li>
-                    <li><a href="#">Contacto</a></li>
+            <li><a href="index.php">Inicio</a></li>
+            <li><a href="url.php">Ingresar URL</a></li>
+            <li class="current_page_item"><a href="Productos.php">Productos</a></li>
+            <li><a href="correo_confirmacion.php">Registro empresa</a></li>
+            <li><a href="categoriaMarca.php">Agregar categoria o marca</a></li>
+            <li><a href="empresas.php">Empresas</a></li>
+            <li><a href="#">Contacto</a></li>
                 </ul>
             </div>
         </div>
@@ -91,7 +102,13 @@ Released   : 20090927
                                         echo "Pollini";
                                     }if ($row['marca_id_marca'] == 6) {
                                         echo "Index";
+                                    }if ($row['marca_id_marca'] == 7) {
+                                        echo "Marquis";
+                                    }if ($row['marca_id_marca'] == 8) {
+                                        echo "Izis";
                                     }
+                                    
+
                                     ?></td>
                                 <td><?php
                                     if ($row['sub_categoria_id_sub_categoria'] == 1) {
@@ -103,7 +120,7 @@ Released   : 20090927
                                 <td><form enctype="multipart/form-data" action="borrarDatos.php" method="post" name="borrar" target="_blank">
                                         <table align="center">
                                             <p><input type="hidden" name="Eliminar" value="<?php echo $row['id_productos']; ?>" style="visibility:hidden " size="4" /></p>
-                                            <p align="center"><input type="submit" value="Eliminar" /></p>
+                                            <p align="center"><input type="submit" value="Eliminar"/></p>
                                         </table>                            
                                     </form></td>
                                 <td><form enctype="multipart/form-data" action="agregarDatos.php" method="post" name="agregar" target="_blank">

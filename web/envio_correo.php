@@ -101,8 +101,19 @@ require("../PHPMailerAutoload.php");
 
 			if($exito){
 			echo "El correo fue enviado correctamente.";
+			?>
+			<script type="text/javascript">
+  				alert("Registro exitoso, por favor espere validacion de un administrador!");
+			</script>
+			<?php
+
 			}else{
 			echo "Hubo un inconveniente. Email no fue enviado.";
+			?>
+			<script type="text/javascript">
+			  alert("Hubo un inconveniente con su registro, por favor contacte al administrador!");
+			</script>
+			<?php
 			}
      		
 		}

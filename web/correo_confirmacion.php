@@ -38,8 +38,6 @@ Released   : 20090927
             <div id="menu">
                 <ul>
                     <li><a href="index.php">Inicio</a></li>
-                    <li><a href="url.php">Ingresar URL</a></li>
-                    <li><a href="Productos.php">Productos</a></li>
                     <li class="current_page_item"><a href="#">Registro Empresa</a></li>
                     <li><a href="#">Contacto</a></li>
                 </ul>

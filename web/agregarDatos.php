@@ -42,7 +42,7 @@ if ((isset($_POST['productoId'])) && ($_POST['productoId'] != '')) {
 			mysqli_query($con2, "Delete from productos Where id_productos='" . $dato . "' ");
                          
                        
-                        echo "<SCRIPT>window.close() </SCRIPT>";
+                       // echo "<SCRIPT>window.close() </SCRIPT>";
                     }
                 }
             }
@@ -50,3 +50,7 @@ if ((isset($_POST['productoId'])) && ($_POST['productoId'] != '')) {
     }
 }
 ?>
+<script type="text/javascript">
+                // window.history.back();
+                window.location.replace(document.referrer);
+            </script>
