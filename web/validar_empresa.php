@@ -40,10 +40,9 @@ Released   : 20090927
             <li><a href="index.php">Inicio</a></li>
             <li><a href="url.php">Ingresar URL</a></li>
             <li><a href="Productos.php">Productos</a></li>
-            <li><a href="correo_confirmacion.php">Registro empresa</a></li>
             <li><a href="categoriaMarca.php">Agregar categoria o marca</a></li>
             <li class="current_page_item"><a href="empresas.php">Empresas</a></li>
-            <li><a href="#">Contacto</a></li>
+
             </ul>
         </div>
     </div>

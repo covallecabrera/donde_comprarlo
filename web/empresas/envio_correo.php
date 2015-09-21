@@ -1,28 +1,32 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Donde Comprarlo</title>
-
-    </head>
-    <body>
-
 <?php
-require_once('db_conexion.php');
-require("../PHPMailerAutoload.php");
 
-      if ((isset($_POST['correo']))) {
+
+require_once('../db_conexion.php'); 
+require('../../PHPMailerAutoload.php');
+require('validaciones_empresas.php');
+
+
+
+      if ((isset($_POST['correo']))&&(isset($_POST['rut']))&&(isset($_POST['nombre']))&&(isset($_POST['direccion']))) {
 
       		$correo=$_POST['correo'];
       		$rut=$_POST['rut'];
       		$nombre=$_POST['nombre'];
       		$direccion=$_POST['direccion'];
       		
+      		valida_campos_vacios($correo,$direccion,$nombre,$rut); // valido campos vacios
+
+      		valida_rut($rut); // valido rut correcto    
+
+      		valida_correo_valido($correo); // valido correo sea valido como tal
+
+			valida_no_existente_rut($rut,$con); // valido rut no ha sido ingresado
+			
+			valida_no_existente_correo($correo,$con); // valido correo no ha sido ingresado
+
+
+
+
       		$file = $_FILES['url']; //Asignamos el contenido del parametro a una variable para su mejor manejo
 			
 			$varname = $_FILES['url']['name'];
@@ -119,3 +123,5 @@ require("../PHPMailerAutoload.php");
 		}
 		echo "<script languaje='javascript' type='text/javascript'>window.close();</script>";
 ?>
+
+

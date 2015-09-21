@@ -21,11 +21,11 @@
       $mail->IsSMTP();
       $mail->SMTPAuth = true;
       $mail->SMTPSecure = 'tls';
-      $mail->Host = "smtp.live.com"; // SMTP a utilizar. Por ej. smtp.elserver.com
-      $mail->Username = "facoovalle@hotmail.es"; // Correo completo a utilizar
-      $mail->Password = "misisipi.247111"; // Contraseña
+      $mail->Host = "mail.donde-comprarlo.com"; // SMTP a utilizar. Por ej. smtp.elserver.com
+      $mail->Username = "administrador@donde-comprarlo.com"; // Correo completo a utilizar
+      $mail->Password = "misisipi2471"; // Contraseña
       $mail->Port = 587; // Puerto a utilizar
-      $mail->From = "facoovalle@hotmail.es"; // Desde donde enviamos (Para mostrar)
+      $mail->From = "administrador@donde-comprarlo.com"; // Desde donde enviamos (Para mostrar)
       $mail->FromName = "Administrador";
       $mail->AddAddress($correo); // Esta es la dirección a donde enviamos
     //  $mail->AddCC($correo); // Copia

@@ -28,11 +28,8 @@ Released   : 20090927
 	<div id="menu">
 		<ul>
 			<li class="current_page_item"><a href="index.php">Inicio</a></li>
-			<li><a href="url.php">Ingresar URL</a></li>
-			<li><a href="Productos.php">Productos</a></li>
-			<li><a href="correo_confirmacion.php">Registro empresa</a></li>
-			<li><a href="categoriaMarca.php">Agregar categoria o marca</a></li>
-			<li><a href="empresas.php">Empresas</a></li>
+			<li><a href="empresas/correo_confirmacion.php">Registro empresa</a></li>
+			<li><a href="empresas/ingreso_empresa.php">Ingreso empresa</a></li>
 			<li><a href="#">Contacto</a></li>
 		</ul>
 	</div>
@@ -47,8 +44,9 @@ Released   : 20090927
 				<h1>Bienvenido a Donde Comprarlo</h1>
 			</div>
 			<div class="entry"> <img src="images/img17.jpg" alt="" width="120" height="120" class="left" />
-				<p>This is <strong>Balanced</strong>, a free, fully standards-compliant CSS template designed by <a href="http://www.freecsstemplates.org/">Free CSS Templates</a>. This free template is released under a <a href="http://creativecommons.org/licenses/by/2.5/">Creative Commons Attributions 2.5</a> license, so you're pretty much free to do whatever you want with it  (even use it commercially) provided you keep the links in the footer  intact. Aside from that, have fun with it :)</p>
-				<p>This template is also available as a <a href="http://www.freewpthemes.net/preview/balanced/">WordPress theme</a> at <a href="http://www.freewpthemes.net/">Free WordPress Themes</a>. The photo on this template is from <a href="http://www.pdphoto.org/">PDPhoto.org</a>. </p>
+				<p> Bienvenido a Donde Comprarlo, en este sitio usted podrá registrar su empresa, publicar sus productos y administrarlos de la manera
+					que a usted le acomode. </p>
+				<p> Para cualquier duda o consulta por favor pongase en contacto al correo <a href="mailto:admnistrador@donde-comprarlo.com">administrador@donde-comprarlo.com </a></p>
 			</div>
 			<div class="btm">
 				<div class="l">
@@ -61,16 +59,13 @@ Released   : 20090927
 		<div class="two-columns">
 			<div class="columnA">
 				<div class="title red">
-					<h2>Lorem Ipsum</h2>
+					<h2>Links Cortos</h2>
 				</div>
 				<div class="content">
 					<ul>
-						<li><a href="#">Aliquam libero</a></li>
-						<li><a href="#">Consectetuer adipiscing elit</a></li>
-						<li><a href="#">metus aliquam pellentesque</a></li>
-						<li><a href="#">Suspendisse iaculis mauris</a></li>
-						<li><a href="#">Urnanet non molestie semper</a></li>
-						<li><a href="#">Proin gravida orci porttitor</a></li>
+						<li><a href="index.php">Inicio</a></li>
+						<li><a href="correo_confirmacion.php">Registro empresa</a></li>
+						<li><a href="#">Contacto</a></li>
 					</ul>
 				</div>
 			</div>
@@ -125,7 +120,7 @@ Released   : 20090927
 <!-- end page -->
 <div style="clear: both;">&nbsp;</div>
 <div id="footer">
-	<p>&copy;2007 All Rights Reserved. &nbsp;&bull;&nbsp; Design by <a href="http://www.freecsstemplates.org/">Free CSS Templates</a></p>
+	<p> Entrar como  <a href = "administrador/administrador.php">administrador </a> </p>
+	<p>&copy;2015 Derechos Reservados. &nbsp;&bull;&nbsp; Diseñado por <a href="http://www.freecsstemplates.org/">Free CSS Templates</a></p>
 </div>
-<div align=center>This template  downloaded form <a href='http://all-free-download.com/free-website-templates/'>free website templates</a></div></body>
 </html>

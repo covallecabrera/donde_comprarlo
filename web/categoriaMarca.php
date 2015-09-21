@@ -44,10 +44,8 @@ Released   : 20090927
             <li><a href="index.php">Inicio</a></li>
             <li><a href="url.php">Ingresar URL</a></li>
             <li><a href="Productos.php">Productos</a></li>
-            <li><a href="correo_confirmacion.php">Registro empresa</a></li>
             <li class="current_page_item"><a href="categoriaMarca.php">Agregar categoria o marca</a></li>
             <li><a href="empresas.php">Empresas</a></li>
-            <li><a href="#">Contacto</a></li>
                 </ul>
             </div>
         </div>
@@ -55,15 +53,17 @@ Released   : 20090927
         <!-- start page -->
         <div id="page">
             <!-- start content -->
+            <br>
             <div id="content">
                 <div class="post greenbox">
                     <div class="title">
-                        <h1>Ingresar nueva categoria</h1>
+                        <h1>Categoria</h1>
                     </div>
-                    <div class="entry"> <img src="images/url1.jpg" alt="" width="150" height="150" class="right" />
-                        <h2><p align="center">Ingrese nueva Categoria</p></h2>
+                    <div class="entry"> <img src="images/categoria.png" alt="" width="150" height="150" class="right" />
+                        <h2><p align="center">Nueva Categoria</p></h2>
                         <form enctype="multipart/form-data" action="ingresoCategoria.php" method="post" name="categoria" target="_blank">
                             <table align="center">
+                            <p align="center">Ingrese una nueva categoría para ser rastreada  </p>
                             <p align="center">Categoria: <input type="text" name="categoria"  /></p>
                             <p align="center"><input type="submit" value="Ingresar" /></p>
                             </table>                            
@@ -79,15 +79,18 @@ Released   : 20090927
             
             <br></br>
             <!-- start content -->
+        
             <div id="content">
+                <br>
                 <div class="post greenbox">
                     <div class="title">
-                        <h1>Ingresar nueva sub-categoria</h1>
+                        <h1>Sub-Categoria</h1>
                     </div>
-                    <div class="entry"> <img src="images/url1.jpg" alt="" width="150" height="150" class="right" />
-                        <h2><p align="center">Ingrese nueva Sub-Categoria</p></h2>
+                    <div class="entry"> <img src="images/subcategoria.png" alt="" width="150" height="150" class="right" />
+                        <h2><p align="center">Nueva Sub-Categoria</p></h2>
                         <form enctype="multipart/form-data" action="ingresoSubCategoria.php" method="post" name="subcategoria" target="_blank">
                             <table align="center">
+                                <p align="center">Seleccione una categoria para ingresar una nueva Sub-Categoria  </p>
                                 <p align="center">Categoria asociada:<select name="idcategoria">
                                     <?php
                         //Hacemos un ciclo en donde imprimimos cada registro de la tabla
@@ -113,17 +116,18 @@ Released   : 20090927
                 </div>
                 </div>
             <br></br>
-            <!-- start content -->
+          <!-- start content -->
             <div id="content">
+                <br>
                 <div class="post greenbox">
                     <div class="title">
-                        <h1>Ingresar nueva marca</h1>
+                        <h1>Marca</h1>
                     </div>
-                    <div class="entry"> <img src="images/url1.jpg" alt="" width="150" height="150" class="right" />
-                        <h2><p align="center">Ingrese nueva Marca</p></h2>
+                    <div class="entry"> <img src="images/marcas.jpeg" alt="" width="150" height="150" class="right" />
+                        <h2><p align="center">Nueva Marca</p></h2>
                         <form enctype="multipart/form-data" action="ingresoMarca.php" method="post" name="ingreso" target="_blank">
                             <table align="center">
-                                                                
+                            <p align="center">Ingrese una nueva marca para ser rastreada  </p>                
                             <p align="center">Marca: <input type="text" name="marca"  /></p>
                             <p align="center"><input type="submit" value="Ingresar" /></p>
                             </table>                            

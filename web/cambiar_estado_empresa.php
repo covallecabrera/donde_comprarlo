@@ -16,6 +16,7 @@ and open the template in the editor.
 <?php
 require_once('db_conexion.php');
 require("../PHPMailerAutoload.php");
+require('generar_contrasena.php');
 
 	$id_empresa = $_GET['id'];
 	$validacion = $_GET['validacion'];
@@ -33,10 +34,12 @@ require("../PHPMailerAutoload.php");
 	}
 
 	if ($validacion == 'valida'){
+		$contrasena = generaPass();
 		$estado = "Validada";
 		$asunto = "Su empresa ha sido validada en Donde Comprarlo ";
-		$mensaje = "Estimada empresa ".$nombre_empresa ." Rut: " .$rut_empresa. " su empresa ya ha sido validada por uno de nuestros administradores";
+		$mensaje = "Estimada empresa ".$nombre_empresa ." Rut: " .$rut_empresa. " su empresa ya ha sido validada por uno de nuestros administradores y su contraseña es: ".$contrasena."";
 		$tipo_correo = "Correo de Validacion";
+		$result = mysqli_query($con,"update empresa set contrasena_empresa = '".$contrasena."' where id_empresa = ".$id_empresa."");
 	}elseif ($validacion == 'no_valida') {
 		$estado = "Rechazada";
 		$asunto = "Su empresa ha sido rechazada en Donde Comprarlo ";
