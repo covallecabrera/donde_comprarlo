@@ -13,7 +13,9 @@ require('validaciones_empresas.php');
       		$rut=$_POST['rut'];
       		$nombre=$_POST['nombre'];
       		$direccion=$_POST['direccion'];
-      		
+
+      		//$rut = formato_rut($rut1);// Formateo Rut en 11.111.111-1
+
       		valida_campos_vacios($correo,$direccion,$nombre,$rut); // valido campos vacios
 
       		valida_rut($rut); // valido rut correcto    
@@ -95,8 +97,8 @@ require('validaciones_empresas.php');
 			$mail->AddCC($correo); // Copia
 			//$mail->AddBCC("cuenta@dominio.com"); // Copia oculta
 			$mail->IsHTML(true); // El correo se envía como HTML
-			$mail->Subject = "Validacion en espera para empresa ".$_POST['nombre']; // Este es el titulo del email.
-			$body = "Se ha recibido una nueva empresa ".$_POST['nombre'] ." Rut: " .$_POST['rut']. " que espera ser validada ";
+			$mail->Subject = "Validacion en espera para empresa ".$nombre; // Este es el titulo del email.
+			$body = "Se ha recibido una nueva empresa ".$nombre ." Rut: " .$rut. " que espera ser validada ";
 			//$body .= "/n Acá continuo el <strong>mensaje</strong>";
 			$mail->Body = $body; // Mensaje a enviar
 			//$mail->AltBody = "Hola mundo. Esta es la primer línean. Acá continuo el mensaje";//Texto sin html

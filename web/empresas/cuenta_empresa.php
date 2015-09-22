@@ -17,25 +17,28 @@
             <meta name="keywords" content="" />
             <meta name="description" content="" />
             <link href="../default.css" rel="stylesheet" type="text/css" media="screen" />
+<!--            
             <script> 
             function abrir(){
-                open('Popup.php', '', 'top=300,left=300,width=200,height=50');
+                open('../Popup.php', '', 'top=300,left=300,width=200,height=50');
             } 
             
             
             </script>
-          
+           -->
         </head>
         <body>
             <!-- start header -->
              <?php  
-
+             require('../db_conexion.php');
              require('validaciones_empresas.php');
 
 
              $rut_empresa = $_POST['rut'];
              $contrasena_empresa = $_POST['contrasena'];
-             $rut_empresa
+
+            //$rut_empresa = formato_rut($rut_empresa1);
+
              valida_campos_vacios_ingreso($rut_empresa,$contrasena_empresa);
              valida_rut($rut_empresa);
              valida_rut_existente($rut_empresa,$con);

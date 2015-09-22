@@ -99,66 +99,6 @@ Released   : 20090927
              <input type="submit" value="Validar Empresas" name="validar empresas" />
                             
             </form>
-<!--
-    <script type="text/javascript">
-        
-        function hola(){
-            alert("EMpresasadasd ");
-           var X =  document.getelementbyid("el id va aca").value();
-        }
-
-        function cambiar_estado(){
-            var xmlhttp = new XMLHttpRequest();
-            var url = "php/verActualizarAlertas.php";
-
-    xmlhttp.onreadystatechange=function() {
-        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-            myFunction(xmlhttp.responseText);
-        }
-    }
-    xmlhttp.open("GET", url, true);
-    xmlhttp.send();
-
-    function myFunction(response) {
-        console.log(response);
-
-        var arr = JSON.parse(response);
-        var i;
-    
-        for(i = 0; i < arr.length; i++) {
-            console.log(arr[i].nombre_alerta);
-            console.log(arr[i].sensor);
-            console.log(arr[i].signo);
-            console.log(arr[i].valor);
-            console.log(arr[i].estado);
-            var estado;
-            if (arr[i].estado == 1){
-                estado = "Activada";
-            }else{
-                estado = "Desactivada";
-            }
-            var sensor;
-            if (arr[i].sensor == 1){
-                sensor = "Temperatura";
-            }
-            else if(arr[i].sensor == 2){
-                sensor = "Humedad";
-            }
-            else if(arr[i].sensor == 3){
-                sensor = "Gas";
-            }
-
-
-
-            out += "<li class='collection-item avatar'><i class='mdi-action-assessment circle green'></i><span class='title'>"+arr[i].nombre_alerta+"</span><p>"+sensor+" "+arr[i].signo+" "+arr[i].valor+"<br>"+estado+"</p><a href='#!' class='secondary-content'><i class='mdi-action-grade'></i></a></li>";
-            //lista
-        }
-        }
-        $("#lista").prepend(out);
-    }
-    </script>
--->
-
                         
 </body>
 </html>

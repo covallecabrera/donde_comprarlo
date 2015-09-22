@@ -33,6 +33,10 @@ function valida_rut($rut)
             exit;
 }
 
+function formato_rut( $rut ) { 
+    return number_format( substr ( $rut, 0 , -1 ) , 0, "", ".") . '-' . substr ( $rut, strlen($rut) -1 , 1 );
+}
+
 function valida_no_existente_rut($rut,$con){
 
             $consulta_rut = ("Select * from empresa");
@@ -141,15 +145,14 @@ function valida_rut_existente($rut,$con){
 }
 
 function valida_contrasena_empresa($rut,$contrasena,$con){
-
-            $consulta_empresa = ("Select * from empresa where rut_empresa = ".$rut_empresa);
-                
+          
+            $consulta_empresa = ("Select * from empresa where rut_empresa = '".$rut."'");
              $result = mysqli_query($con,$consulta_empresa);
 
              while ($row = mysqli_fetch_array($result)) {
                 $nombre_empresa = $row['nombre_empresa'];
                 if($row['estado_empresa']=="Validada"){
-                    if ($row['contrasena_empresa']==$contrasena_empresa){
+                    if ($row['contrasena_empresa']==$contrasena){
                         ?>
                         <script type="text/javascript">
                          alert("Inicio de sesión Exitoso!");
