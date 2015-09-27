@@ -47,7 +47,7 @@ Released   : 20090927
             <li><a href="index.php">Inicio</a></li>
             <li><a href="url.php">Ingresar URL</a></li>
             <li class="current_page_item"><a href="Productos.php">Productos</a></li>
-            <li><a href="categoriaMarca.php">Agregar categoria o marca</a></li>
+            <li><a href="categoriaMarca.php">Administrar Rastreador</a></li>
             <li><a href="empresas.php">Empresas</a></li>
 
                 </ul>
@@ -68,6 +68,7 @@ Released   : 20090927
                             <th>Precio</th>
                             <th>Descripcion</th>
                             <th>Marca</th>
+                            <th>Sub Categoria</th>
                             <th>Categoria</th>
                             <th>Eliminar</th>
                             <th>Ingresar</th>
@@ -89,34 +90,43 @@ Released   : 20090927
                                     ?></td>
                                 <td><?php echo $row['descripcion_producto'] ?></td>
                                 <td><?php
-                                    if ($row['marca_id_marca'] == 1) {
-                                        echo "Azaleia";
-                                    }if ($row['marca_id_marca'] == 2) {
-                                        echo "16 HRS";
-                                    }if ($row['marca_id_marca'] == 3) {
-                                        echo "Gacel";
-                                    }if ($row['marca_id_marca'] == 4) {
-                                        echo "Naturalizer";
-                                    }if ($row['marca_id_marca'] == 5) {
-                                        echo "Pollini";
-                                    }if ($row['marca_id_marca'] == 6) {
-                                        echo "Index";
-                                    }if ($row['marca_id_marca'] == 7) {
-                                        echo "Marquis";
-                                    }if ($row['marca_id_marca'] == 8) {
-                                        echo "Izis";
-                                    }
+
+                                $sqlMarca = mysqli_query($con, "Select * from marca where id_marca = ".$row["marca_id_marca"]);
+                                
+                                while ($puntero = mysqli_fetch_array($sqlMarca)) {
+
+                                    echo $puntero["nombre_marca"];
+                                } 
+                                
                                     
 
                                     ?></td>
                                 <td><?php
-                                    if ($row['sub_categoria_id_sub_categoria'] == 1) {
-                                        echo "Botas";
-                                    }if ($row['sub_categoria_id_sub_categoria'] == 2) {
-                                        echo "Botines";
-                                    }
+
+                                $sqlSubCategoria = mysqli_query($con, "Select * from sub_categoria where id_sub_categoria = ".$row["sub_categoria_id_sub_categoria"]);
+                                
+                                while ($puntero = mysqli_fetch_array($sqlSubCategoria)) {
+
+                                    echo $puntero["nombre_sub_categoria"];
+                                } 
+
                                     ?></td>
-                                <td><form enctype="multipart/form-data" action="borrarDatos.php" method="post" name="borrar" target="_blank">
+                                 <td><?php
+
+                                $sqlSubCategoria = mysqli_query($con, "Select * from sub_categoria where id_sub_categoria = ".$row["sub_categoria_id_sub_categoria"]);
+                                
+                                    while ($puntero = mysqli_fetch_array($sqlSubCategoria)) {
+
+                                        $sqlCategoria = mysqli_query($con, "Select * from categoria where id_categoria = ".$puntero["categoria_id_categoria"]);
+
+                                        
+                                        while ($puntero1 = mysqli_fetch_array($sqlCategoria)) {
+
+                                            echo $puntero1["nombre_categoria"];
+                                        } 
+                                }
+                                    ?></td>
+                                <td><form enctype="multipart/form-data" action="borrarDatos.php" method="post" name="borrar" target="_self">
                                         <table align="center">
                                             <p><input type="hidden" name="Eliminar" value="<?php echo $row['id_productos']; ?>" style="visibility:hidden " size="4" /></p>
                                             <p align="center"><input type="submit" value="Eliminar"/></p>

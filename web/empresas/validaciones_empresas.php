@@ -115,7 +115,7 @@ function valida_correo_valido($correo){
             </script>
 
             <?php
-            echo "<script languaje='javascript' type='text/javascript'>window.close();</script>";
+                echo "<script languaje='javascript' type='text/javascript'>window.close();</script>";
             exit;
             }
 }

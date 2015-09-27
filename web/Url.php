@@ -40,7 +40,7 @@ Released   : 20090927
             <li><a href="index.php">Inicio</a></li>
             <li class="current_page_item"><a href="url.php">Ingresar URL</a></li>
             <li><a href="Productos.php">Productos</a></li>
-            <li><a href="categoriaMarca.php">Agregar categoria o marca</a></li>
+            <li><a href="categoriaMarca.php">Administrar Rastreador</a></li>
             <li><a href="empresas.php">Empresas</a></li>
 
 
@@ -58,7 +58,7 @@ Released   : 20090927
                     </div>
                     <div class="entry"> <img src="images/url1.jpg" alt="" width="150" height="150" class="right" />
                         <h2><p align="center">Ingrese URL a rastrear</p></h2>
-                        <form enctype="multipart/form-data" action="aranav3.php" method="post" name="ingreso" target="_blank">
+                        <form enctype="multipart/form-data" action="redireccionArana.php" method="post" name="ingreso" target="_blank">
                             <table align="center">
                             <p align="center">URL: <input type="text" name="url"  /></p>
                             <p align="center"><input type="submit" value="Ingresar URL" /></p>
