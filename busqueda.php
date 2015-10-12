@@ -27,6 +27,7 @@ $result = mysql_query("SELECT DISTINCT *
           INNER JOIN tienda ON tienda.id_tienda = tienda_has_productos.tienda_id_tienda
           INNER JOIN tienda_sucursal ON tienda_sucursal.tienda_id_tienda = tienda.id_tienda
         where productos.nombre_producto like '%".$buscar."%' 
+        AND productos.estado_producto = 1
             GROUP BY productos.id_productos
          ORDER BY marca.nombre_marca ASC , productos.nombre_producto ASC ") or die(mysql_error());
 
