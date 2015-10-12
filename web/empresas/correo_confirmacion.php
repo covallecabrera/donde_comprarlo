@@ -39,6 +39,7 @@ Released   : 20090927
                 <ul>
                     <li><a href="../index.php">Inicio</a></li>
                     <li class="current_page_item"><a href="#">Registro Empresa</a></li>
+                    <li><a href="ingreso_empresa.php">Ingreso Empresa</a></li>
                     <li><a href="#">Contacto</a></li>
                 </ul>
             </div>
@@ -58,7 +59,7 @@ Released   : 20090927
                             <table align="center">
                             <p align="center">Nombre Empresa: <input type="text" placeholder="Ingrese nombre de su empresa"name="nombre"  /></p>
                             <p align="center">Rut Empresa: <input type="text" placeholder="12.123.123-2" name="rut"  /></p>
-                            <p align="center">Dirección Empresa: <input type="text" placeholder="Ingrese dirección de su empresa"name="direccion"  /></p>
+                            <p align="center">Dirección Empresa: <input type="text" placeholder="Tres Oriente 1331, Viña del Mar"name="direccion"  /></p>
                             <p align="center">Correo: <input type="text" placeholder="trabajo@ejemplo.cl" name="correo"  /></p>
                             <p align="center">Archivo: <input type="file" name="url"  /></p>
                             <p align="center">Adjunte cualquier archivo que sea válido para poder comprobar su empresa (Ej. Escáner Cedula Empresa) </p>

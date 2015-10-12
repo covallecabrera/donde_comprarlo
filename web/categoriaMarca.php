@@ -66,7 +66,7 @@ Released   : 20090927
                     </div>
                     <div class="entry"> <img src="images/url1.jpg" alt="" width="150" height="150" class="right" />
                         <h2><p align="center">Nueva Sitio</p></h2>
-                        <form enctype="multipart/form-data" action="ingresarSitio.php" method="post" name="categoria" target="_blank">
+                        <form enctype="multipart/form-data" action="ingresarSitio.php" method="post" name="categoria" target="_self">
                             <table align="center">
                             <p align="center">Agregue un Script para nuevo sitio </p>
                             <a align="center" href="ejemplo_arana.txt" target="_blank"><p>Ver Ejemplo Scrip</p></a>
@@ -96,7 +96,7 @@ Released   : 20090927
                     </div>
                     <div class="entry"> <img src="images/categoria.png" alt="" width="150" height="150" class="right" />
                         <h2><p align="center">Nueva Categoria</p></h2>
-                        <form enctype="multipart/form-data" action="ingresoCategoria.php" method="post" name="categoria" target="_blank">
+                        <form enctype="multipart/form-data" action="ingresoCategoria.php" method="post" name="categoria" target="_self">
                             <table align="center">
                             <p align="center">Ingrese una nueva categoría para ser rastreada  </p>
                             <p align="center">Categoria: <input type="text" name="categoria"  /></p>
@@ -136,7 +136,7 @@ Released   : 20090927
                     </div>
                     <div class="entry"> <img src="images/subcategoria.png" alt="" width="150" height="150" class="right" />
                         <h2><p align="center">Nueva Sub-Categoria</p></h2>
-                        <form enctype="multipart/form-data" action="ingresoSubCategoria.php" method="post" name="subcategoria" target="_blank">
+                        <form enctype="multipart/form-data" action="ingresoSubCategoria.php" method="post" name="subcategoria" target="_self">
                             <table align="center">
                                 <p align="center">Seleccione una categoria para ingresar una nueva Sub-Categoria  </p>
                                 <p align="center">Categoria asociada:<select name="idcategoria">
@@ -186,7 +186,7 @@ Released   : 20090927
                     </div>
                     <div class="entry"> <img src="images/marcas.jpeg" alt="" width="150" height="150" class="right" />
                         <h2><p align="center">Nueva Marca</p></h2>
-                        <form enctype="multipart/form-data" action="ingresoMarca.php" method="post" name="ingreso" target="_blank">
+                        <form enctype="multipart/form-data" action="ingresoMarca.php" method="post" name="ingreso" target="_self">
                             <table align="center">
                             <p align="center">Ingrese una nueva marca para ser rastreada  </p>                
                             <p align="center">Marca: <input type="text" name="marca"  /></p>
@@ -222,7 +222,7 @@ Released   : 20090927
                     </div>
                     <div class="entry"> <img src="images/nuevo_producto.gif" alt="" width="150" height="150" class="right" />
                         <h2><p align="center">Nuevo Producto</p></h2>
-                        <form enctype="multipart/form-data" action="ingresoProducto.php" method="post" name="ingreso" target="_blank">
+                        <form enctype="multipart/form-data" action="ingresoProducto.php" method="post" name="ingreso" target="_self">
                             <table align="center">
                             <p align="center">Ingrese nombre nuevo producto  </p>                
                             <p align="center">Nombre: <input type="text" name="nombre"  /></p>

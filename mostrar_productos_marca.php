@@ -31,6 +31,7 @@ $result = mysql_query("SELECT DISTINCT *
          WHERE productos.nombre_producto like '%".$texto."%'
          AND marca.id_marca = ".$buscar1."
          AND sub_categoria.id_sub_categoria = ".$buscar." 
+         AND productos.estado_producto = 1
          GROUP BY productos.id_productos
          ORDER BY productos.id_productos ASC") or die(mysql_error());
 /* 

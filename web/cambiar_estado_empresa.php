@@ -23,13 +23,13 @@ require('generar_contrasena.php');
 
 
  	//mysqli_close($con);//cerramos la conexión
-	$result2 = mysqli_query($con,"select * from empresa where id_empresa =".$id_empresa."");
+	$result2 = mysqli_query($con,"select * from tienda where id_tienda =".$id_empresa."");
 	while ($row = mysqli_fetch_array($result2)) {
 				
-		$id_empresa = $row['id_empresa'];
-		$nombre_empresa = $row['nombre_empresa'];
-		$correo_empresa = $row['correo_empresa'];	
-		$rut_empresa = $row['rut_empresa'];
+		$id_empresa = $row['id_tienda'];
+		$nombre_empresa = $row['direccion_tienda'];
+		$correo_empresa = $row['correo_tienda'];	
+		$rut_empresa = $row['rut_tienda'];
 	
 	}
 
@@ -39,7 +39,7 @@ require('generar_contrasena.php');
 		$asunto = "Su empresa ha sido validada en Donde Comprarlo ";
 		$mensaje = "Estimada empresa ".$nombre_empresa ." Rut: " .$rut_empresa. " su empresa ya ha sido validada por uno de nuestros administradores y su contraseña es: ".$contrasena."";
 		$tipo_correo = "Correo de Validacion";
-		$result = mysqli_query($con,"update empresa set contrasena_empresa = '".$contrasena."' where id_empresa = ".$id_empresa."");
+		$result = mysqli_query($con,"update tienda set contrasena_tienda = '".$contrasena."' where id_tienda = ".$id_empresa."");
 	}elseif ($validacion == 'no_valida') {
 		$estado = "Rechazada";
 		$asunto = "Su empresa ha sido rechazada en Donde Comprarlo ";
@@ -48,7 +48,7 @@ require('generar_contrasena.php');
 	
 	}
 
-	$result = mysqli_query($con,"update empresa set estado_empresa = '".$estado."' where id_empresa = ".$id_empresa."");
+	$result = mysqli_query($con,"update tienda set estado_tienda = '".$estado."' where id_tienda = ".$id_empresa."");
 
 			$mail = new PHPMailer();
 
@@ -84,7 +84,7 @@ require('generar_contrasena.php');
 			$estado_correo = "Correo Satisfactorio";
 			date_default_timezone_set('America/Argentina/Buenos_Aires'); 
             $fecha = getdate();
-			$result3 = mysqli_query($con,"INSERT INTO log_correo_empresa (log_correo, tipo_correo, estado_correo, empresa_id_empresa) VALUES ('".$fecha[year]."-".$fecha[mon]."-".$fecha[mday]." ".$fecha[hours].":".$fecha[minutes].":".$fecha[seconds]."','".$tipo_correo."','".$estado_correo."', '".$id_empresa."')");
+			$result3 = mysqli_query($con,"INSERT INTO log_correo_empresa (log_correo, tipo_correo, estado_correo, tienda_id_tienda) VALUES ('".$fecha[year]."-".$fecha[mon]."-".$fecha[mday]." ".$fecha[hours].":".$fecha[minutes].":".$fecha[seconds]."','".$tipo_correo."','".$estado_correo."', '".$id_empresa."')");
 			?>
 			<script type="text/javascript">
  			 alert("Empresa notificada correctamente!");
@@ -95,7 +95,7 @@ require('generar_contrasena.php');
 			$estado_correo = "Correo Erroneo";
 			date_default_timezone_set('America/Argentina/Buenos_Aires'); 
             $fecha = getdate();
-			$result3 = mysqli_query($con,"INSERT INTO log_correo_empresa (log_correo, tipo_correo, estado_correo, empresa_id_empresa) VALUES ('".$fecha[year]."-".$fecha[mon]."-".$fecha[mday]." ".$fecha[hours].":".$fecha[minutes].":".$fecha[seconds]."','".$tipo_correo."','".$estado_correo."', '".$id_empresa."')");
+			$result3 = mysqli_query($con,"INSERT INTO log_correo_empresa (log_correo, tipo_correo, estado_correo, tienda_id_tienda) VALUES ('".$fecha[year]."-".$fecha[mon]."-".$fecha[mday]." ".$fecha[hours].":".$fecha[minutes].":".$fecha[seconds]."','".$tipo_correo."','".$estado_correo."', '".$id_empresa."')");
 			?>
 			<script type="text/javascript">
  			 alert("Empresa no ha sido notificada!");

@@ -17,15 +17,6 @@
             <meta name="keywords" content="" />
             <meta name="description" content="" />
             <link href="../default.css" rel="stylesheet" type="text/css" media="screen" />
-<!--            
-            <script> 
-            function abrir(){
-                open('../Popup.php', '', 'top=300,left=300,width=200,height=50');
-            } 
-            
-            
-            </script>
-           -->
         </head>
         <body>
             <!-- start header -->
@@ -33,9 +24,12 @@
              require('../db_conexion.php');
              require('validaciones_empresas.php');
 
-
+             if(isset($_GET['rut_empresa'])){
+                $rut_empresa = $_GET['rut_empresa'];
+             }else{
              $rut_empresa = $_POST['rut'];
              $contrasena_empresa = $_POST['contrasena'];
+
 
             //$rut_empresa = formato_rut($rut_empresa1);
 
@@ -43,8 +37,17 @@
              valida_rut($rut_empresa);
              valida_rut_existente($rut_empresa,$con);
              valida_contrasena_empresa($rut_empresa,$contrasena_empresa,$con);
+             }
 
+             $consulta_nombre = ("Select nombre_tienda from tienda where rut_tienda = '" . $rut_empresa . "' ");
+            
+            $result = mysqli_query($con,$consulta_nombre);
 
+            while ($row = mysqli_fetch_array($result)) {
+                
+                $nombre_empresa = $row['nombre_tienda'];
+                
+            }
 
              ?>
 
@@ -55,11 +58,11 @@
                 </div>
                 <div id="menu">
                     <ul>
-                        <li class="current_page_item"><a href="cuenta_empresa.php">Inicio</a></li>
-                        <li><a href="#">Agregar Productos</a></li>
-                        <li><a href="#">Eliminar Productos</a></li>
-                        <li><a href="#">Modificar Produtos</a></li>
-                        <li><a href="#">Modificar Cuenta</a></li>
+                        <li class="current_page_item"><a href="cuenta_empresa.php?rut_empresa=<?php echo $rut_empresa ;?>">Inicio</a></li>
+                        <li><a href="ingreso_producto_empresa.php?rut_empresa=<?php echo $rut_empresa ;?>">Agregar Productos</a></li>
+                        <li><a href="administrar_producto_empresa.php?rut_empresa=<?php echo $rut_empresa ;?>">Administrar Productos</a></li>
+                        <li><a href="modificar_cuenta_empresa.php?rut_empresa=<?php echo $rut_empresa ;?>">Modificar Cuenta</a></li>
+                        <li><a href="../index.php">Cerrar Sesión</a></li>
 
                     </ul>
                 </div>
@@ -68,13 +71,13 @@
             <!-- start page -->
             <div id="page">
         <!-- start content -->
-        <div id="content">
+        <div id="content" style="margin-left:170px;">
             <div class="post greenbox">
                 <div class="title">
                     <h1>Sitio de Empresa de Donde Comprarlo</h1>
                 </div>
                 <div class="entry"> <img src="../images/img17.jpg" alt="" width="120" height="120" class="left" />
-                    <p> Bienvenida empresa <?php echo $nombre_empresa ?>  a su cuenta de Donde Comprarlo. Acá usted podrá agregar agregar nuevos productos, 
+                    <p> Bienvenida empresa <strong><?php echo $nombre_empresa ?></strong>  a su cuenta de Donde Comprarlo. Acá usted podrá agregar agregar nuevos productos, 
                         eliminar productos o modificarlos, además podrá modificar datos de su cuenta.</p>
                 </div>
                 <div class="btm">
@@ -92,10 +95,10 @@
                     </div>
                     <div class="content">
                         <ul>
-                            <li><a href="#">Agregar Productos</a></li>
-                            <li><a href="#">Eliminar Productos</a></li>
-                            <li><a href="#">Modificar Produtos</a></li>
-                            <li><a href="#">Modificar Cuenta</a></li>
+                        <li><a href="ingreso_producto_empresa.php?rut_empresa=<?php echo $rut_empresa ;?>">Agregar Productos</a></li>
+                        <li><a href="administrar_producto_empresa.php?rut_empresa=<?php echo $rut_empresa ;?>">Administrar Productos</a></li>
+                        <li><a href="modificar_cuenta_empresa.php?rut_empresa=<?php echo $rut_empresa ;?>">Modificar Cuenta</a></li>
+                        <li><a href="../index.php">Cerrar Sesión</a></li>
                         </ul>
                     </div>
                 </div>

@@ -31,8 +31,8 @@ Released   : 20090927
 
         <?php
         require_once ('db_conexion.php');
-        require_once('db_conexion2.php');
-        $result = mysqli_query($con2, "Select * from productos"); //Realizamos la seccion de todos los registros de la tabla de las imagenes.
+
+        $result = mysqli_query($con, "Select * from productos where estado_producto = 0"); //Realizamos la seccion de todos los registros de la tabla de las imagenes.
         
 
         ?>
@@ -82,7 +82,7 @@ Released   : 20090927
                             <tr>			
                                 <td><?php echo $row['nombre_producto']; ?></td>
                                 <td><?php
-                                    $result2 = mysqli_query($con2, "Select * from tienda_has_productos where productos_id_productos='" . $row['id_productos'] . "'");
+                                    $result2 = mysqli_query($con, "Select * from tienda_has_productos where productos_id_productos='" . $row['id_productos'] . "'");
                                     while ($row2 = mysqli_fetch_array($result2)) {
                                         $precioDato=$row2['precio_producto'];
                                         echo $row2['precio_producto'];
@@ -132,7 +132,7 @@ Released   : 20090927
                                             <p align="center"><input type="submit" value="Eliminar"/></p>
                                         </table>                            
                                     </form></td>
-                                <td><form enctype="multipart/form-data" action="agregarDatos.php" method="post" name="agregar" target="_blank">
+                                <td><form enctype="multipart/form-data" action="agregarDatos.php" method="post" name="agregar" target="_self">
                                         <table align="center">
                                             <p><input type="hidden" name="productoId" value="<?php echo $row['id_productos']; ?>" style="visibility:hidden "  /></p>
                                             <p><input type="hidden" name="productoNombre" value="<?php echo $row['nombre_producto']; ?>" style="visibility:hidden "  /></p>
@@ -155,8 +155,7 @@ Released   : 20090927
                             </tr>
                             <?php
                         } //Fin del Ciclo
-                        //mysqli_close($con2); //cerramos la conexión
-                        //mysqli_close($con); //cerramos la conexión
+                       
                         ?>
                     </table>
 

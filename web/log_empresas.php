@@ -60,9 +60,9 @@ Released   : 20090927
 
         <?php require_once('db_conexion.php'); //importamos el archivo de conexión 
             $id_empresa = $_GET['id'];
-        $result = mysqli_query($con,"select * FROM empresa 
-                INNER JOIN log_correo_empresa ON empresa.id_empresa = log_correo_empresa.empresa_id_empresa
-                where empresa.id_empresa = '".$id_empresa."' ");//Realizamos la seccion de todos los registros de empresa y sus imagenes.
+        $result = mysqli_query($con,"select * FROM tienda 
+                INNER JOIN log_correo_empresa ON tienda_id_tienda = log_correo_empresa.tienda_id_tienda
+                where id_tienda = '".$id_empresa."' ");//Realizamos la seccion de todos los registros de empresa y sus imagenes.
 
                 ?>
 
@@ -81,7 +81,7 @@ Released   : 20090927
                     while($row = mysqli_fetch_array($result)){              
                         ?>
                         <tr>            
-                            <td><?php  echo $row['nombre_empresa'] ?></td>
+                            <td><?php  echo $row['nombre_tienda'] ?></td>
                             <td><?php  echo $row['log_correo'] ?></td>
                             <td><?php  echo $row['tipo_correo'] ?></td>
                             <td><?php  echo $row['estado_correo'] ?></td>

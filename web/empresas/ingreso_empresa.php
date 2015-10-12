@@ -57,7 +57,7 @@ Released   : 20090927
                         <h2><p align="center">Ingrese datos de inicio de sesión</p></h2>
                         <form enctype="multipart/form-data" action="cuenta_empresa.php" method="post" name="ingreso" target="_blank">
                             <table align="center">
-                            <p align="center">Rut Empresa: <input type="text" placeholder="12.123.123-2" name="rut"  /></p>
+                            <p align="center">Rut Empresa: <input type="text"  placeholder="12.123.123-2" name="rut"  /></p>
                             <p align="center">Contraseña: <input type="password" placeholder="Contraseña" name="contrasena"  /></p>
                             <p align="center"><input type="submit" value="Iniciar Sesión" /></p>
                             </table>                            
@@ -71,3 +71,6 @@ Released   : 20090927
                 </div>
                 </body>
                 </html>
+
+
+

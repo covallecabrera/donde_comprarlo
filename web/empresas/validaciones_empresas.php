@@ -39,12 +39,12 @@ function formato_rut( $rut ) {
 
 function valida_no_existente_rut($rut,$con){
 
-            $consulta_rut = ("Select * from empresa");
+            $consulta_rut = ("Select * from tienda");
             
             $result = mysqli_query($con,$consulta_rut);
 
             while ($row = mysqli_fetch_array($result)) {
-                if($rut==$row['rut_empresa']){
+                if($rut==$row['rut_tienda']){
                     ?>
             <script type="text/javascript">
                 alert("Empresa ya ha sido registrada con anterioridad!");   
@@ -61,12 +61,12 @@ function valida_no_existente_rut($rut,$con){
 
 function valida_no_existente_correo($correo,$con){
 
-            $consulta_correo = ("Select * from empresa");
+            $consulta_correo = ("Select * from tienda");
             
             $result = mysqli_query($con,$consulta_correo);
 
             while ($row = mysqli_fetch_array($result)) {
-                if($correo==$row['correo_empresa']){
+                if($correo==$row['correo_tienda']){
                                 ?>
             <script type="text/javascript">
                 alert("Correo ingresado ya ha sido utilizado con anterioridad!");   
@@ -122,12 +122,12 @@ function valida_correo_valido($correo){
 
 function valida_rut_existente($rut,$con){
 
-            $consulta_rut = ("Select * from empresa");
+            $consulta_rut = ("Select * from tienda");
             
             $result = mysqli_query($con,$consulta_rut);
 
             while ($row = mysqli_fetch_array($result)) {
-                if($rut==$row['rut_empresa']){
+                if($rut==$row['rut_tienda']){
                     $existe = true;        
                 }
 
@@ -144,15 +144,16 @@ function valida_rut_existente($rut,$con){
 
 }
 
+
 function valida_contrasena_empresa($rut,$contrasena,$con){
           
-            $consulta_empresa = ("Select * from empresa where rut_empresa = '".$rut."'");
+            $consulta_empresa = ("Select * from tienda where rut_tienda = '".$rut."'");
              $result = mysqli_query($con,$consulta_empresa);
 
              while ($row = mysqli_fetch_array($result)) {
-                $nombre_empresa = $row['nombre_empresa'];
-                if($row['estado_empresa']=="Validada"){
-                    if ($row['contrasena_empresa']==$contrasena){
+                $nombre_empresa = $row['nombre_tienda'];
+                if($row['estado_tienda']=="Validada"){
+                    if ($row['contrasena_tienda']==$contrasena){
                         ?>
                         <script type="text/javascript">
                          alert("Inicio de sesión Exitoso!");

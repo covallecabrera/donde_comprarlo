@@ -1,24 +1,12 @@
 <?php
 
-//require_once 'db_conexion.php';
-require_once '../db_config.php';
 
-function ingreso($nombre, $precio, $imagenes, $descricion, $categoria, $marca, $sucursal, $cantidad) {
-    $server = DB_SERVER;
-    $bd = 'donde_comprarlo_copia';
-    $user = DB_USER;
-    $pas = DB_PASSWORD;
 
-    $con = mysqli_connect($server, $user, $pas, $bd);
-
-//$db= new DB_CONNECT();    
-//$db=mysqli_connect('localhost', 'root', '123', 'donde_comprarlo');
-    //  $link = mysql_connect("localhost", "root"."123");
-    //mysql_select_db("donde_comprarlo",$db);
+function ingreso($nombre, $precio, $imagenes, $descricion, $categoria, $marca, $sucursal, $cantidad,$con) {
 
     for ($k = 0; $k < $cantidad; $k++) {
 		
-        $query = "INSERT INTO productos (nombre_producto,descripcion_producto,marca_id_marca,sub_categoria_id_sub_categoria) VALUES ('".$nombre[$k]."','".$descricion[$k]."','".$marca[$k]."','".$categoria[$k]."')";
+        $query = "INSERT INTO productos (nombre_producto,descripcion_producto,marca_id_marca,sub_categoria_id_sub_categoria,estado_producto) VALUES ('".$nombre[$k]."','".$descricion[$k]."','".$marca[$k]."','".$categoria[$k]."',0)";
         $result3 = mysqli_query($con, $query);
         //mysqli_close($con);
 

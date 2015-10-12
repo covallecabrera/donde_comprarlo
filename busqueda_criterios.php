@@ -19,10 +19,13 @@ $marca = $_GET["marca"];
 //$rango=$_GET["rango"];
 $precio_max = $_GET["precio_max"];
 $orden = $_GET["orden"];
+
+
+
 // Obteniendo los datos de la base de datos.
 if ($categoria == '0') {
     $result = mysql_query(
-         "SELECT  *
+         "SELECT DISTINCT *
          FROM productos 
          INNER JOIN sub_categoria ON sub_categoria.id_sub_categoria = productos.sub_categoria_id_sub_categoria
          INNER JOIN categoria ON categoria.id_categoria = sub_categoria.categoria_id_categoria
@@ -33,11 +36,14 @@ if ($categoria == '0') {
           INNER JOIN tienda_sucursal ON tienda_sucursal.tienda_id_tienda = tienda.id_tienda
          WHERE productos.nombre_producto like '%" . $buscar . "%' 
          AND tienda_has_productos.precio_producto < " . $precio_max . " 
-         OR sub_categoria.id_sub_categoria = " . $categoria . " 
+
+         AND productos.estado_producto = 1
+             GROUP BY productos.id_productos
          ORDER BY tienda_has_productos.precio_producto " . $orden . "") or die(mysql_error());
+
 } elseif ($marca == '0') {
     $result = mysql_query(
-         "SELECT  *
+         "SELECT DISTINCT *
          FROM productos 
          INNER JOIN sub_categoria ON sub_categoria.id_sub_categoria = productos.sub_categoria_id_sub_categoria
          INNER JOIN categoria ON categoria.id_categoria = sub_categoria.categoria_id_categoria
@@ -49,10 +55,12 @@ if ($categoria == '0') {
          WHERE productos.nombre_producto like '%" . $buscar . "%' 
          AND tienda_has_productos.precio_producto < " . $precio_max . " 
          AND sub_categoria.id_sub_categoria = " . $categoria . " 
+         AND productos.estado_producto = 1
              GROUP BY productos.id_productos
          ORDER BY tienda_has_productos.precio_producto " . $orden . "") or die(mysql_error());
+
 } else {
-    $result = mysql_query("SELECT  *
+    $result = mysql_query("SELECT DISTINCT *
          FROM productos 
          INNER JOIN sub_categoria ON sub_categoria.id_sub_categoria = productos.sub_categoria_id_sub_categoria
          INNER JOIN categoria ON categoria.id_categoria = sub_categoria.categoria_id_categoria
@@ -65,8 +73,10 @@ if ($categoria == '0') {
          AND tienda_has_productos.precio_producto < " . $precio_max . " 
          AND sub_categoria.id_sub_categoria = " . $categoria . " 
          AND marca.id_marca = " . $marca . "
+         AND productos.estado_producto = 1
              GROUP BY productos.id_productos
          ORDER BY tienda_has_productos.precio_producto " . $orden . "") or die(mysql_error());
+
 }
 /*
   SELECT * FROM productos p  INNER JOIN categoria c

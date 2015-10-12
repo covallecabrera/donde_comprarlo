@@ -29,7 +29,7 @@ Released   : 20090927
     <body>
         <!-- start header -->
          <?php  
-         if (($_POST['usuario'] == admin) && ($_POST['password'] == 12345)){
+         if (($_POST['usuario'] == 'admin') && ($_POST['password'] == 12345)){
         ?>
             <script type="text/javascript">
              alert("Logueo Exitoso!");
@@ -72,7 +72,7 @@ Released   : 20090927
         <!-- start page -->
         <div id="page">
     <!-- start content -->
-    <div id="content">
+    <div id="content" style="margin-left:170px;">
         <div class="post greenbox">
             <div class="title">
                 <h1>Sitio de Administrador de Donde Comprarlo</h1>

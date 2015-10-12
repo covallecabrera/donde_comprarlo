@@ -1,20 +1,37 @@
 <?php
+
 require_once ('Conexion.php');
 require_once ('db_conexion.php'); 
 require_once ('simple_html_dom.php');
-//require '../db_connect.php';
+
 
 set_time_limit(2000);
 
 $url = $_POST['url'];
 
 //$url = 'http://www.ripley.cl/ripley-chile/moda/calzado-mujer/botas-y-botines';
+// si servidor tiene en php.ini permiso allow_url_fopen = On  entonces usar file_get_html
 
-$web = tomaDatos($url,$con);
+    $curl = curl_init(); 
+    curl_setopt($curl, CURLOPT_URL, $url);  
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);  
+    curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, 10);  
+    $str = curl_exec($curl);  
+    curl_close($curl);  
+
+$web = tomaDatos($str,$con);
 
 $cantidad = count($web);
 for ($k = 0; $k < $cantidad; $k++) {
-    $url = file_get_html($web[$k]);
+
+    $curl = curl_init(); 
+    curl_setopt($curl, CURLOPT_URL, $web[$k]);  
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);  
+    curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, 10);  
+    $str = curl_exec($curl);  
+    curl_close($curl);  
+
+    $url = str_get_html($str);
     $nombre[$k] = tomaNombre($url,$con);
     $precio[$k] = tomaPrecio($url);
     $imagenes[$k] = tomaImagenes($url);
@@ -24,8 +41,8 @@ for ($k = 0; $k < $cantidad; $k++) {
     $sucursal[$k] = "1";
 }
 
- $respuesta = ingreso($nombre, $precio, $imagenes, $descricion, $categoria, $marca, $sucursal, $cantidad);
-                 ?>
+ $respuesta = ingreso($nombre, $precio, $imagenes, $descricion, $categoria, $marca, $sucursal, $cantidad, $con);
+            ?>
             <script type="text/javascript">
                     alert("Proceso Terminado!");
                     window.close();
@@ -44,10 +61,12 @@ for ($k = 0; $k < $cantidad; $k++) {
  * 
  */
 
-function tomaDatos($url,$con) {                          //Toma del link del Producto
+function tomaDatos($str,$con) {                          //Toma del link del Producto
     $i = 0;
-    $html = file_get_html($url);
-   
+
+
+    $html= str_get_html($str); 
+
     $sqlSubCategoria = mysqli_query($con, "Select * from sub_categoria");
     
     while ($puntero = mysqli_fetch_array($sqlSubCategoria)) {
@@ -65,7 +84,7 @@ function tomaDatos($url,$con) {                          //Toma del link del Pro
                 if (strstr($link->plaintext, $marca)) {
                     if (strstr($link->plaintext, $subCategoria)) {
                         $web[$i] = $link->href;
-                        //echo $web[$i];
+                        // echo $web[$i];
                         $i+=1;
                     }
                 }
@@ -149,7 +168,7 @@ function tomaDescripcion($web,$con,$marca) {           //Toma de la descripcion 
     $sqlMarca = mysqli_query($con, "Select * from marca");
     while ($row = mysqli_fetch_array($sqlMarca)) {
         if($marca == $row["id_marca"]){
-            $marca1 = $row["nombre_marca"];
+            $marca1 = strtoupper($row["nombre_marca"]);
         }
     } 
 
@@ -199,3 +218,4 @@ function tomaMarca($web,$con) {                      //Toma de la marca del prod
     }
     return $result;
 }
+?>

@@ -54,14 +54,14 @@ Released   : 20090927
                     </div>
                     <div class="entry"> <img src="../images/url1.jpg" alt="" width="150" height="150" class="right" />
                         <h2><p align="center">Ingrese credenciales de administrador</p></h2>
-                        <form enctype="multipart/form-data" action="ingreso_administrador.php" method="post" name="ingreso" target="_blank">
+                        <form enctype="multipart/form-data" action="ingreso_administrador.php" method="post" name="ingreso" target="_self">
                             <table align="center">
                             <p align="center">Usuario: <input type="text" name="usuario"  /></p>
                             <p align="center">Password: <input type="password" name="password"  /></p>
                             <p align="center"><input type="submit" value="Entrar"  /></p>
                             </table>                            
                         </form>
-                        <?php echo "<SCRIPT>window.close();</SCRIPT>"; ?>
+                        
 
 
 

@@ -59,8 +59,8 @@ Released   : 20090927
                 <!-- Tabla que muestra los registros de la base de datos -->
 
         <?php require_once('db_conexion.php'); //importamos el archivo de conexión 
-        $result = mysqli_query($con,"select * FROM empresa 
-                INNER JOIN imagen_empresa_validacion ON empresa.id_empresa = imagen_empresa_validacion.empresa_id_empresa");//Realizamos la seccion de todos los registros de empresa y sus imagenes.
+        $result = mysqli_query($con,"select * FROM tienda 
+                INNER JOIN imagen_empresa_validacion ON tienda_id_tienda = imagen_empresa_validacion.tienda_id_tienda where estado_tienda <> ''");//Realizamos la seccion de todos los registros de empresa y sus imagenes.
 
                 ?>
 
@@ -80,12 +80,12 @@ Released   : 20090927
                     while($row = mysqli_fetch_array($result)){              
                         ?>
                         <tr>            
-                            <td><?php  echo $row['nombre_empresa'] ?></td>
-                            <td><?php  echo $row['rut_empresa'] ?></td>
-                            <td><?php  echo $row['direccion_empresa'] ?></td>
-                            <td><?php  echo $row['correo_empresa'] ?></td>
-                            <td><?php  echo $row['estado_empresa'] ?></td>
-                            <td><a href="log_empresas.php?id=<?php echo $row['id_empresa'] ?>">Ver Log Empresa</a></td> 
+                            <td><?php  echo $row['nombre_tienda'] ?></td>
+                            <td><?php  echo $row['rut_tienda'] ?></td>
+                            <td><?php  echo $row['direccion_tienda'] ?></td>
+                            <td><?php  echo $row['correo_tienda'] ?></td>
+                            <td><?php  echo $row['estado_tienda'] ?></td>
+                            <td><a href="log_empresas.php?id=<?php echo $row['id_tienda'] ?>">Ver Log Empresa</a></td> 
 
                         </tr>
             <?php } //Fin del Ciclo

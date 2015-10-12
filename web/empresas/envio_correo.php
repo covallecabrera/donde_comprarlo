@@ -1,10 +1,11 @@
 <?php
 
 
-require_once('../db_conexion.php'); 
 require('../../PHPMailerAutoload.php');
+
 require('validaciones_empresas.php');
 
+require('../db_conexion.php'); 
 
 
       if ((isset($_POST['correo']))&&(isset($_POST['rut']))&&(isset($_POST['nombre']))&&(isset($_POST['direccion']))) {
@@ -13,7 +14,6 @@ require('validaciones_empresas.php');
       		$rut=$_POST['rut'];
       		$nombre=$_POST['nombre'];
       		$direccion=$_POST['direccion'];
-
       		//$rut = formato_rut($rut1);// Formateo Rut en 11.111.111-1
 
       		valida_campos_vacios($correo,$direccion,$nombre,$rut); // valido campos vacios
@@ -25,6 +25,23 @@ require('validaciones_empresas.php');
 			valida_no_existente_rut($rut,$con); // valido rut no ha sido ingresado
 			
 			valida_no_existente_correo($correo,$con); // valido correo no ha sido ingresado
+
+			// Transformamos la direccion puesta por la empresa a latitud y longitud para poder se rmostrado en la aplicacion
+			$address = $direccion;
+			$address = urlencode($address);
+			$url = "http://maps.google.com/maps/api/geocode/json?address=$address&sensor=false&region=India";
+			$ch = curl_init();
+			curl_setopt($ch, CURLOPT_URL, $url);
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+			curl_setopt($ch, CURLOPT_PROXYPORT, 3128);
+			curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+			$response = curl_exec($ch);
+			curl_close($ch);
+			$response_a = json_decode($response);
+			$lat = $response_a->results[0]->geometry->location->lat;		
+			$long = $response_a->results[0]->geometry->location->lng;
+			// Fin de la conversion, tenemos lat y long.
 
 
 
@@ -49,31 +66,31 @@ require('validaciones_empresas.php');
 			$estado = "Pendiente";
 			//Insertando los datos
 			//Creando el query para insertar nueva empresa
-			$insert_empresa = "INSERT INTO empresa (rut_empresa ,nombre_empresa ,direccion_empresa, correo_empresa,estado_empresa) VALUES ('$rut' ,'$nombre' ,'$direccion', '$correo', '$estado')";
+			$insert_empresa = "INSERT INTO tienda (rut_tienda ,nombre_tienda ,direccion_tienda, correo_tienda,estado_tienda) VALUES ('$rut' ,'$nombre' ,'$direccion', '$correo', '$estado')";
 			
 			//Ejecutando el Query
 			$result = mysqli_query($con, $insert_empresa);
-			
 			// Consulta para consultar el ID de la empresa para agregarla a la tabla de imagen empresa
 
-			$consulta_rut = ("Select id_empresa from empresa where rut_empresa = '" . $rut . "' ");
+			$consulta_rut = ("Select id_tienda from tienda where rut_tienda = '" . $rut . "' ");
 			
 			$result = mysqli_query($con,$consulta_rut);
 
 			while ($row = mysqli_fetch_array($result)) {
 				
-				$id_empresa = $row['id_empresa'];
+				$id_empresa = $row['id_tienda'];
 				
 			}
 			//////
 			//Insertando imagen de empresa en bdd
-			$insert_imagen_empresa = "INSERT INTO imagen_empresa_validacion (fileName ,extension , foto, empresa_id_empresa ) VALUES ('$fileName' ,'$fileExtension' ,'$contenido' ,'$id_empresa')";
+			$insert_imagen_empresa = "INSERT INTO imagen_empresa_validacion (fileName ,extension , foto, tienda_id_tienda ) VALUES ('$fileName' ,'$fileExtension' ,'$contenido' ,'$id_empresa')";
 
 			//Ejecutando el Query
 			$result = mysqli_query($con, $insert_imagen_empresa);
-			
-			mysqli_close($con);//cerramos la conexión
-		
+
+			mysqli_query($con,"INSERT INTO tienda_sucursal (direccion_sucursal,latitud,longitud,tienda_id_tienda) VALUES ('$direccion','$lat','$long','$id_empresa')");
+
+				
 
             $correo = $_POST['correo'];
 			$mail = new PHPMailer();
