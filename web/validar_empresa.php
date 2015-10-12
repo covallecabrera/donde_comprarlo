@@ -60,7 +60,7 @@ Released   : 20090927
 
         <?php require_once('db_conexion.php'); //importamos el archivo de conexión 
         $result = mysqli_query($con,"select * FROM tienda 
-                INNER JOIN imagen_empresa_validacion ON tienda_id_tienda = imagen_empresa_validacion.tienda_id_tienda
+                INNER JOIN imagen_empresa_validacion ON id_tienda = imagen_empresa_validacion.tienda_id_tienda
                 where estado_tienda = 'Pendiente' or estado_tienda = 'Rechazada' ");//Realizamos la seccion de todos los registros de empresa y sus imagenes.
 
                 ?>

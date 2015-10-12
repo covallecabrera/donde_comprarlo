@@ -59,8 +59,8 @@ Released   : 20090927
                 <!-- Tabla que muestra los registros de la base de datos -->
 
         <?php require_once('db_conexion.php'); //importamos el archivo de conexión 
-        $result = mysqli_query($con,"select * FROM tienda 
-                INNER JOIN imagen_empresa_validacion ON tienda_id_tienda = imagen_empresa_validacion.tienda_id_tienda where estado_tienda <> ''");//Realizamos la seccion de todos los registros de empresa y sus imagenes.
+        $result = mysqli_query($con,"select  * FROM tienda 
+                INNER JOIN imagen_empresa_validacion ON tienda.id_tienda = imagen_empresa_validacion.tienda_id_tienda where tienda.estado_tienda <> ''");//Realizamos la seccion de todos los registros de empresa y sus imagenes.
 
                 ?>
 

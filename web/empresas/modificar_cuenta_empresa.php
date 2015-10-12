@@ -163,7 +163,7 @@ function enviar_correo($correo){
             $mail->From = "facoovalle@hotmail.es"; // Desde donde enviamos (Para mostrar)
             $mail->FromName = "Administrador";
             $mail->AddAddress($correo); // Esta es la dirección a donde enviamos
-            $mail->AddCC(); // Copia
+            // $mail->AddCC(); // Copia
             //$mail->AddBCC("cuenta@dominio.com"); // Copia oculta
             $mail->IsHTML(true); // El correo se envía como HTML
             $mail->Subject = "Los datos de su cuenta han sido modificados correctamente"; // Este es el titulo del email.

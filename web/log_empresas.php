@@ -61,7 +61,7 @@ Released   : 20090927
         <?php require_once('db_conexion.php'); //importamos el archivo de conexión 
             $id_empresa = $_GET['id'];
         $result = mysqli_query($con,"select * FROM tienda 
-                INNER JOIN log_correo_empresa ON tienda_id_tienda = log_correo_empresa.tienda_id_tienda
+                INNER JOIN log_correo_empresa ON tienda.id_tienda = log_correo_empresa.tienda_id_tienda
                 where id_tienda = '".$id_empresa."' ");//Realizamos la seccion de todos los registros de empresa y sus imagenes.
 
                 ?>
