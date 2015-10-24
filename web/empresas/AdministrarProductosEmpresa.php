@@ -6,18 +6,17 @@
 	$id_producto = $_GET['id'];
 	$rut_empresa = $_GET['rut_empresa'];
 	if ($accion == "eliminar"){
+
 		mysqli_query($con, "Delete from tienda_has_productos Where productos_id_productos='" . $id_producto . "' ");
 		mysqli_query($con, "Delete from imagen Where productos_id_productos='" . $id_producto . "' ");
 		mysqli_query($con, "Delete from productos Where id_productos='" . $id_producto . "' ");
-
 		?>
 			<script type="text/javascript">
- 				// window.history.back();
  				alert("Su producto ha sido eliminado con exito");
  				window.location.replace(document.referrer);
 			</script>
 		<?php
-
+        
 
 	}elseif ($accion == "actualizar"){
 		?>
@@ -103,9 +102,19 @@ Released   : 20090927
         $precio = htmlspecialchars($_POST['precioUpdate']);
         validar_precio($precio);
         validacion_campos($nombre,$descricion,$precio);
+        if($nombre != "" && $descricion != "" && $precio != "" && validar_precio($precio)==true){
         mysqli_query($con, "UPDATE productos SET nombre_producto='".$nombre."',descripcion_producto='".$descricion."' WHERE id_productos='".$produId."'");
         mysqli_query($con, "UPDATE tienda_has_productos SET precio_producto='".$precio."' WHERE productos_id_productos='".$produId."'");
+        }else{
+                            ?>
+            <script type="text/javascript">
+                 // window.history.back();
+                alert("Por favor, no deje campos en blanco");
+                //window.location.replace(document.referrer);
 
+            </script>
+        <?php
+        }
         		?>
 			<script type="text/javascript">
  				 // window.history.back();

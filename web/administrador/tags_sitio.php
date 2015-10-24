@@ -53,11 +53,11 @@ Released   : 20090927
             </div>
             <div id="menu">
                 <ul>
-                        <li><a href="cuenta_empresa.php?rut_empresa=<?php echo $rut_empresa; ?>">Inicio</a></li>
-                        <li><a href="ingreso_producto_empresa.php?rut_empresa=<?php echo $rut_empresa ;?>">Agregar Productos</a></li>
-                        <li class ="current_page_item"><a href="administrar_producto_empresa.php?rut_empresa=<?php echo $rut_empresa ;?>">Administrar Productos</a></li>
-                        <li><a href="modificar_cuenta_empresa.php?rut_empresa=<?php echo $rut_empresa ;?>">Modificar Cuenta</a></li>
-                        <li><a href="../index.php">Cerrar Sesión</a></li>
+            <li><a href="ingreso_administrador.php">Inicio</a></li>
+            <li><a href="../url.php">Ingresar URL</a></li>
+            <li><a href="../Productos.php">Productos</a></li>
+            <li class="current_page_item"><a href="../categoriaMarca.php">Agregar categoria o marca</a></li>
+            <li><a href="../empresas.php">Empresas</a></li>
                 </ul>
             </div>
         </div>

@@ -103,7 +103,7 @@ Released   : 20090927
 
                         <input multiple align="left" style ="margin-left:120px;" name="upload[]" id="upload" type="file" accept ="images/jpeg"/>
                         <p alig ="left" style="margin-left:130px;">No puede seleccionar más de 6 imagenes.</p>
-                            <p align="left"style="margin-left:180px;"><input type="submit" value="Ingresar" /></p>
+                            <p align="left"style="margin-left:180px;"><input type="submit" value="Ingresar Producto" /></p>
                             </table>                            
                         </form>
 
