@@ -62,10 +62,31 @@ Released   : 20090927
             <div id="content">
                 <div class="post greenbox">
                     <div class="title">
+                        <h1>Administrar Ejecución Automática</h1>
+                    </div>
+                    <div class="entry"> <img src="images/url1.jpg" alt="" width="150" height="150" class="right" />
+                        <h2><p align="center">Haga click para ver configuración de automatización</p></h2>
+                            <table align="center">
+                            <p align="center"><a  href="administrador/automatizacion_arana.php" >Configuración Araña </a></p>
+                            
+                            </table>                            
+                        </form>
+
+
+                        <br></br>
+
+                    </div>
+
+                </div>
+                </div>
+
+            <div id="content">
+                <div class="post greenbox">
+                    <div class="title">
                         <h1>Categoria</h1>
                     </div>
                     <div class="entry"> <img src="images/url1.jpg" alt="" width="150" height="150" class="right" />
-                        <h2><p align="center">Nueva Sitio</p></h2>
+                        <h2><p align="center">Nuevo Sitio</p></h2>
                         <form enctype="multipart/form-data" action="ingresarSitio.php" method="post" name="categoria" target="_self">
                             <table align="center">
                             <p align="center">Agregue un Script para nuevo sitio </p>

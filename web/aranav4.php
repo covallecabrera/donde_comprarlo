@@ -38,16 +38,14 @@ for ($k = 0; $k < $cantidad; $k++) {
     $marca[$k] = tomaMarca($url,$con);
     $descricion[$k] = tomaDescripcion($url,$con,$marca[$k]);
     $categoria[$k] = tomaCategoria($url,$con);
-    $sucursal[$k] = "1";
+    $sucursal[$k] = "3";
 }
 
  $respuesta = ingreso($nombre, $precio, $imagenes, $descricion, $categoria, $marca, $sucursal, $cantidad, $con);
             ?>
             <script type="text/javascript">
-                    alert("Proceso Terminado!");
-                    // window.close();
-                    window.history.back();
-
+                   alert("Proceso Terminado!");
+                   window.history.back();
             </script>                   
             <?php
 
@@ -66,13 +64,12 @@ for ($k = 0; $k < $cantidad; $k++) {
 function tomaDatos($str,$con) {                          //Toma del link del Producto
     $i = 0;
 
-
     $html= str_get_html($str); 
-
-    $sqlSubCategoria = mysqli_query($con, "Select * from sub_categoria");
+    //echo $html;
+    // $sqlSubCategoria = mysqli_query($con, "Select * from sub_categoria");
     
-    while ($puntero = mysqli_fetch_array($sqlSubCategoria)) {
-        $subCategoria = strtoupper($puntero['nombre_sub_categoria']);
+    // while ($puntero = mysqli_fetch_array($sqlSubCategoria)) {
+    //     $subCategoria = strtoupper($puntero['nombre_sub_categoria']);
 
         $sqlMarca = ("Select * from marca ");
         $result = mysqli_query($con,$sqlMarca);
@@ -82,17 +79,16 @@ function tomaDatos($str,$con) {                          //Toma del link del Pro
             $marca1 = $row['nombre_marca'];
             $marca = strtoupper($marca1);   
            //echo "1";
-            foreach ($html->find('a') as $link) {
-                if (strstr($link->plaintext, $marca)) {
-                    if (strstr($link->plaintext, $subCategoria)) {
-                        $web[$i] = $link->href;
-                        // echo $web[$i];
+            foreach ($html->find('a[title]') as $link) {
+                //echo $link;
+                if (strstr(strtoupper($link->plaintext), $marca)) {
+                        $web[$i] = "http://www.falabella.com".$link->href;
+                         //echo $web[$i];
                         $i+=1;
-                    }
                 }
             }
         }
-    }
+    // }
     return $web;
 }
 
@@ -103,14 +99,18 @@ function tomaDatos($str,$con) {                          //Toma del link del Pro
 function tomaNombre($web,$con) {                     //Toma del nombre de cada producto
     $html = $web;
     $sqlSubCategoria = mysqli_query($con, "Select * from sub_categoria");
-    while ($puntero = mysqli_fetch_array($sqlSubCategoria)) {
-        $subCategoria = strtoupper($puntero['nombre_sub_categoria']);
-        foreach ($html->find('span[class="breadcrumb_current"]') as $nombre) {
-            if (strstr($nombre->plaintext, $subCategoria)) {
-                $result = strval($nombre->plaintext);
-            }
+    // while ($puntero = mysqli_fetch_array($sqlSubCategoria)) {
+    //     $subCategoria = strtoupper($puntero['nombre_sub_categoria']);
+        foreach ($html->find('span[id=productDecription]') as $nombre) {
+            // if (strstr(strtoupper($nombre->plaintext), $subCategoria)) {
+                $nombre = strval($nombre->plaintext);
+                $nombre = utf8_decode($nombre);
+                $nombre = str_replace("&iacute;", "i", $nombre);
+                $result = $nombre;
+                
+            // }
         }
-    }
+    // }
     return $result;
 }
 
@@ -120,18 +120,15 @@ function tomaNombre($web,$con) {                     //Toma del nombre de cada p
 
 function tomaPrecio($web) {                     //Toma del precio del producto
     $html = $web;
-
-    foreach ($html->find('p') as $precio) {
-        if ($precio != null) {
-            if (strstr($precio, "Normal")) {
+    foreach ($html->find('div[class=precio2]') as $asd) {
+        foreach ($asd->find('span[class=unitPriceD]')as $precio) {
 
                 $result = strval($precio->plaintext);
-                $result = substr($result, 9);
+                $result = str_replace('$', '', $result);
                 $result = str_replace('.', '', $result);
-            }
-        }
+                
     }
-
+    }
     return $result;
 }
 
@@ -164,29 +161,18 @@ function tomaImagenes($web) {                //Toma de las imagenes del producto
 
 function tomaDescripcion($web,$con,$marca) {           //Toma de la descripcion del producto
     $html = $web;
-    $i = 0;
-    $x = 0;
 
-    $sqlMarca = mysqli_query($con, "Select * from marca");
-    while ($row = mysqli_fetch_array($sqlMarca)) {
-        if($marca == $row["id_marca"]){
-            $marca1 = strtoupper($row["nombre_marca"]);
-        }
-    } 
 
-        foreach ($html->find('p') as $descripcion) {
-            
-            if ($i == 0) {
-
-               if (strstr($descripcion,$marca1)) {
-                    
+        foreach ($html->find('div[id=contenidoDescripcionPP]') as $asd) {
+            foreach($asd->find('ul') as $asdf){
+                foreach($asdf->find('li') as $descripcion){
                     $result = strval($descripcion->plaintext);
-
-                    $i+=1;
-                }
-            
+                    //echo $result;
+                    
+                
             }
-        }   
+            }
+          }
 
         return $result;
           
@@ -197,9 +183,15 @@ function tomaCategoria($web,$con) {          //Toma de la categoria del producto
     $sqlSubCategoria = mysqli_query($con, "Select * from sub_categoria");
     while ($puntero = mysqli_fetch_array($sqlSubCategoria)) {
         $subCategoria = strtoupper($puntero['nombre_sub_categoria']);
-        foreach ($html->find('span[class="breadcrumb_current"]') as $nombre) {
-            if (strstr($nombre, $subCategoria)) {
+        foreach ($html->find('span[id=productDecription]') as $nombre) {
+            $nombre = strval($nombre->plaintext);
+            $nombre = utf8_decode($nombre);
+            $nombre = strtoupper($nombre);
+            $nombre = str_replace("&IACUTE;", "i", $nombre);
+            echo $nombre;
+            if (strstr(strtoupper($nombre), $subCategoria)) {
                 $result = $puntero['id_sub_categoria'];
+                
             }
         }
     }
@@ -212,9 +204,10 @@ function tomaMarca($web,$con) {                      //Toma de la marca del prod
     while ($row = mysqli_fetch_array($sqlMarca)) {
         $marca1 = $row['nombre_marca'];
         $marca = strtoupper($marca1);
-        foreach ($html->find('span[class="breadcrumb_current"]') as $nombre) {
-            if (strstr($nombre->plaintext, $marca)) {
+        foreach ($html->find('span[id=productBrand]') as $nombre) {
+            if (strstr(strtoupper($nombre->plaintext), $marca)) {
                 $result = $row['id_marca'];
+                
             }
         }
     }

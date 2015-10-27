@@ -45,7 +45,7 @@ require ('db_conexion.php');
 require 'rutas.php';
 //Lo primerito, creamos una variable iniciando curl, pasándole la url
 
-$url1 = $_POST["url"];
+$url1 = $_GET["url"];
 $script = '';
 
 if ($url1 == ''){
@@ -73,7 +73,8 @@ if ($script == ''){
 	?>
 	        <script type="text/javascript">
 	  				alert("Sitio ingresado no es soportado!");
-	  				window.close();
+	  				// window.close();
+	  				window.history.back();
 			</script>           		
 	        <?php
 }

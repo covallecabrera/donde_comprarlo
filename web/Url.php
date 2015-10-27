@@ -58,7 +58,7 @@ Released   : 20090927
                     </div>
                     <div class="entry"> <img src="images/url1.jpg" alt="" width="150" height="150" class="right" />
                         <h2><p align="center">Ingrese URL a rastrear</p></h2>
-                        <form enctype="multipart/form-data" action="redireccionArana.php" method="post" name="ingreso" target="_blank">
+                        <form enctype="multipart/form-data" action="redireccionArana.php" method="get" name="ingreso" target="_self">
                             <table align="center">
                             <p align="center">URL: <input type="text" name="url"  /></p>
                             <p align="center"><input type="submit" value="Ingresar URL" /></p>
