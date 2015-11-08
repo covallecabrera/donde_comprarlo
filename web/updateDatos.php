@@ -18,7 +18,8 @@ if ((isset($_POST['idUpdate'])) && ($_POST['idUpdate'] != '')) {
                 // window.history.back();
                 // window.location.replace(document.referrer);
                 alert("Producto modificado con exito");
-                window.close();
+                // window.close();
+
             </script>
             <?php
             }

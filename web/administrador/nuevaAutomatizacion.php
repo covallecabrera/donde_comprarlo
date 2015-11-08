@@ -38,46 +38,52 @@ if($unico == "unico"&&$termino=="termino"){
 }
 
 if($unico=="unico"){
-	$respuesta = shell_exec("at ".$horario." cmd /c start ".$ruta_redireccion_arana."?url=".$url); 
+	$next = repeticion($unico);
+	$respuesta = shell_exec("at ".$horario.$next.$dia." cmd /c start ".$ruta_redireccion_arana."redireccionArana.php?url=".$url); 
 	$id = substr($respuesta, 52);
-	mysqli_query($con,"INSERT INTO automatizacion_arana (nombre_sitio,url_rastreo,estado, horario, tipo, fecha_termino,id_at) VALUES ('".$nombre_tienda."','".$url."','".$estado."','".$horario."','".$unico."','".$ano."-".$mes."-".$dia."'".$id")");
+	mysqli_query($con,"INSERT INTO automatizacion_arana (nombre_sitio,url_rastreo,estado, horario, tipo, fecha_termino,id_at) VALUES ('".$nombre_tienda."','".$url."','".$estado."','".$horario."','".$unico."','".$ano."-".$mes."-".$dia."',".$id.")");
 	// mysqli_query($con,"INSERT INTO automatizacion_arana (nombre_sitio,url_rastreo,estado, horario, tipo, fecha_termino) VALUES ('".$nombre_tienda."','".$url."','".$estado."','".$horario."','".$unico."','".$ano."-".$mes."-".$dia."')");
 }
 if ($termino == "termino"){
 	// echo "at ".$horario." cmd start ".$ruta_redireccion_arana."?url=".$url;
-
-	$respuesta = shell_exec("at ".$horario.$every." cmd /c start ".$ruta_redireccion_arana."?url=".$url); 
+	// schtasks /create /tn "Nombre Tarea, en este caso ID" /tr "ACCION A EJECUTAR cmd /c start ... " /sc "DAILY o lo que sea" /st 21:21
+	$respuesta = shell_exec("at ".$horario.$every." cmd /c start ".$ruta_redireccion_arana."redireccionArana.php?url=".$url); 
 	$id = substr($respuesta, 52);
-	 mysqli_query($con,"INSERT INTO automatizacion_arana (nombre_sitio,url_rastreo,estado, horario, tipo, fecha_termino,id_at) VALUES ('".$nombre_tienda."','".$url."','".$estado."','".$horario."','".$automatizacion."','".$ano."-".$mes."-".$dia."'".$id")");
+	 mysqli_query($con,"INSERT INTO automatizacion_arana (nombre_sitio,url_rastreo,estado, horario, tipo, fecha_termino,id_at) VALUES ('".$nombre_tienda."','".$url."','".$estado."','".$horario."','".$automatizacion."','".$ano."-".$mes."-".$dia."',".$id.")");
 	 // mysqli_query($con,"INSERT INTO automatizacion_arana (nombre_sitio,url_rastreo,estado, horario, tipo, fecha_termino) VALUES ('".$nombre_tienda."','".$url."','".$estado."','".$horario."','".$automatizacion."','".$ano."-".$mes."-".$dia."')");
 }elseif ($termino != "termino"&&$unico!="unico") {
-	$respuesta = shell_exec("at ".$horario.$every." cmd /c start ".$ruta_redireccion_arana."?url=".$url); 
+	$respuesta = shell_exec("at ".$horario.$every." cmd /c start ".$ruta_redireccion_arana."redireccionArana.php?url=".$url); 
 	$id = substr($respuesta, 52);	
-	 mysqli_query($con,"INSERT INTO automatizacion_arana (nombre_sitio,url_rastreo,estado, horario, tipo,id_at) VALUES ('".$nombre_tienda."','".$url."','".$estado."','".$horario."','".$automatizacion."'".$id")");
+	 mysqli_query($con,"INSERT INTO automatizacion_arana (nombre_sitio,url_rastreo,estado, horario, tipo,id_at) VALUES ('".$nombre_tienda."','".$url."','".$estado."','".$horario."','".$automatizacion."',".$id.")");
 	 // mysqli_query($con,"INSERT INTO automatizacion_arana (nombre_sitio,url_rastreo,estado, horario, tipo) VALUES ('".$nombre_tienda."','".$url."','".$estado."','".$horario."','".$automatizacion."')");
 }
 		?>
         <script type="text/javascript">
   				alert("Evento Programado con éxito");
-	  			//window.location.replace(document.referrer);
+	  			window.location.replace(document.referrer);
 		</script>           		
         <?php
 
 function repeticion($automatizacion){
 	$repeticion=$automatizacion;
 
-	if($repeticion=="Diario"){
+	if($repeticion=="diario"){
 		$every = " /every:l,m,mi,j,v,s,d";
 	}
-	if($repeticion=="Semanal"){
+	if($repeticion=="semanal"){
 		$every = " /every:mi";
 	}
-	if($repeticion=="Mensual"){
+	if($repeticion=="mensual"){
 		$every = " /every:15";
 	}
-	if($repeticion=="Anual"){
+	if($repeticion=="anual"){
 
 	}	
+	if($repeticion=="unico"){
+		$every = " /next:";
+	}
+	return $every;
+
 }
 function numeros_horas($numero) {
 $no_permitidas= array ("1","2","3","4","5","6","7","8","9","0");

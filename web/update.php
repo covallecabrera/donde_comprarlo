@@ -30,7 +30,7 @@ Released   : 20090927
                 <ul>
             <li><a href="ingreso_administrador.php">Inicio</a></li>
             <li><a href="url.php">Ingresar URL</a></li>
-            <li class="current_page_item"><a href="../Productos.php">Productos</a></li>
+            <li class="current_page_item"><a href="Productos.php">Productos</a></li>
             <li><a href="categoriaMarca.php">Agregar categoria o marca</a></li>
             <li><a href="empresas.php">Empresas</a></li>
                 </ul>
@@ -53,17 +53,22 @@ Released   : 20090927
                     <div class="title">
                         <h1>Actualizar Producto: <?php echo $nombre ?></h1>
                     </div>
-        <form enctype="multipart/form-data" action="updateDatos.php" method="post" name="agregar">
+        <form enctype="multipart/form-data" action="updateDatos.php" method="post" name="agregar" target="_self">
             <table align="center">
                 <p align="center"><input type="hidden" name="idUpdate" value="<?php echo $produId; ?>"  /></p>
                 <p align="center">NOMBRE:<input type="text" name="nombreUpdate" value="<?php echo $nombre; ?>"  /></p>
                 <p align="center">DESCRIPCION:<textarea rows="10" col="20"name="descripcionUpdate">  <?php echo $descricion; ?>  </textarea></p>
                 <p align="center">PRECIO:<input type="text" name="precioUpdate" value="<?php echo $precio; ?>" /></p>
-                <p align="center"><input type="submit" value="Guardar Cambios" /></p>
+                <p align="center"><input type="submit" onclick="volver()"value="Guardar Cambios" /></p>
             </table>                            
         </form>
     </div>
 </div>
 </div>
+<script type="text/javascript">
+function volver(){
+    window.location.replace(document.referrer);
+}
+</script>
     </body>
 </html>
