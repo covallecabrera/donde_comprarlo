@@ -21,13 +21,7 @@ Released   : 20090927
     </head>
     <body>
         <!-- start header -->
-<script type="text/javascript">
-                // window.history.back();
-                function refrescar(){
-                    window.location.replace(document.referrer);
-                }
-                
-            </script>
+
 
         <?php
         require_once ('../db_conexion.php');
@@ -43,11 +37,11 @@ Released   : 20090927
             </div>
             <div id="menu">
                 <ul>
-            <li><a href="../index.php">Inicio</a></li>
-            <li><a href="../url.php">Ingresar URL</a></li>
-            <li><a href="../Productos.php">Productos</a></li>
+            <li><a href="../../index.php">Inicio</a></li>
+            <li><a href="../adm_arana/url.php">Ingresar URL</a></li>
+            <li><a href="../adm_arana/Productos.php">Productos</a></li>
             <li class="current_page_item"><a href="../categoriaMarca.php">Administrar Rastreador</a></li>
-            <li><a href="../empresas.php">Empresas</a></li>
+            <li><a href="../adm_empresas/empresas.php">Empresas</a></li>
 
                 </ul>
             </div>

@@ -1,6 +1,6 @@
 <?php
 
-require_once 'db_conexion.php';
+require_once '../db_conexion.php';
 
 if ((isset($_POST['idUpdate'])) && ($_POST['idUpdate'] != '')) {
     if ((isset($_POST['nombreUpdate'])) && ($_POST['nombreUpdate'] != '')) {
@@ -16,9 +16,9 @@ if ((isset($_POST['idUpdate'])) && ($_POST['idUpdate'] != '')) {
             ?>
                 <script type="text/javascript">
                 // window.history.back();
-                // window.location.replace(document.referrer);
+                //window.location.replace(document.referrer);
                 alert("Producto modificado con exito");
-                // window.close();
+                window.close();
 
             </script>
             <?php

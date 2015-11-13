@@ -16,7 +16,7 @@ Released   : 20090927
 <title>Donde Comprarlo</title>
 <meta name="keywords" content="" />
 <meta name="description" content="" />
-<link href="default.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="web/default.css" rel="stylesheet" type="text/css" media="screen" />
 </head>
 <body>
 <!-- start header -->
@@ -29,8 +29,8 @@ Released   : 20090927
 	<div id="menu">
 		<ul>
 			<li class="current_page_item"><a href="index.php">Inicio</a></li>
-			<li><a href="empresas/correo_confirmacion.php">Registro empresa</a></li>
-			<li><a href="empresas/ingreso_empresa.php">Ingreso empresa</a></li>
+			<li><a href="web/empresas/correo_confirmacion.php">Registro empresa</a></li>
+			<li><a href="web/empresas/ingreso_empresa.php">Ingreso empresa</a></li>
 			<li><a href="#">Contacto</a></li>
 		</ul>
 	</div>
@@ -44,7 +44,7 @@ Released   : 20090927
 			<div class="title">
 				<h1>Bienvenido a Donde Comprarlo</h1>
 			</div>
-			<div class="entry"> <img src="images/img17.jpg" alt="" width="120" height="120" class="left" />
+			<div class="entry"> <img src="web/images/img17.jpg" alt="" width="120" height="120" class="left" />
 				<p> Bienvenido a Donde Comprarlo, en este sitio usted podrá registrar su empresa, publicar sus productos y administrarlos de la manera
 					que a usted le acomode. </p>
 				<p> Para cualquier duda o consulta por favor pongase en contacto al correo <a href="mailto:admnistrador@donde-comprarlo.com">administrador@donde-comprarlo.com </a></p>
@@ -66,8 +66,8 @@ Released   : 20090927
 				<div class="content">
 					<ul>
 						<li><a href="index.php">Inicio</a></li>
-						<li><a href="empresas/correo_confirmacion.php">Registro empresa</a></li>
-						<li><a href="empresas/ingreso_empresa.php">Ingreso empresa</a></li>
+						<li><a href="web/empresas/correo_confirmacion.php">Registro empresa</a></li>
+						<li><a href="web/empresas/ingreso_empresa.php">Ingreso empresa</a></li>
 						<li><a href="#">Contacto</a></li>
 					</ul>
 				</div>
@@ -96,7 +96,7 @@ Released   : 20090927
 <!-- end page -->
 <div style="clear: both;">&nbsp;</div>
 <div id="footer">
-	<p> Entrar como  <a href = "administrador/administrador.php">administrador </a> </p>
+	<p> Entrar como  <a href = "web/administrador/administrador.php">administrador </a> </p>
 	<p>&copy;2015 Derechos Reservados. &nbsp;&bull;&nbsp; Sitio de &copy; <a href="http://www.donde-comprarlo.com/donde_comprarlo/web">Donde Comprarlo</a></p>
 </div>
 </html>

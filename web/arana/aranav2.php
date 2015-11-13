@@ -13,7 +13,7 @@ and open the template in the editor.
     <body>
         <?php
         require 'Conexion.php';
-        require_once 'db_conexion.php';
+        require_once '../db_conexion.php';
         require 'simple_html_dom.php';
 
         set_time_limit(200);

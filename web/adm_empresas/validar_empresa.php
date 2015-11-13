@@ -16,14 +16,8 @@ Released   : 20090927
     <title>Donde Comprarlo</title>
     <meta name="keywords" content="" />
     <meta name="description" content="" />
-    <link href="default.css" rel="stylesheet" type="text/css" media="screen" />
-    <script> 
-    function abrir(){
-        open('Popup.php', '', 'top=300,left=300,width=200,height=50');
-    } 
+    <link href="../default.css" rel="stylesheet" type="text/css" media="screen" />
 
-
-    </script>
 
 </head>
 <body>
@@ -37,10 +31,10 @@ Released   : 20090927
         </div>
         <div id="menu">
             <ul>
-            <li><a href="index.php">Inicio</a></li>
-            <li><a href="url.php">Ingresar URL</a></li>
-            <li><a href="Productos.php">Productos</a></li>
-            <li><a href="categoriaMarca.php">Administrar Rastreador</a></li>
+            <li><a href="../../index.php">Inicio</a></li>
+            <li><a href="../adm_arana/url.php">Ingresar URL</a></li>
+            <li><a href="../adm_arana/Productos.php">Productos</a></li>
+            <li><a href="../adm_arana/categoriaMarca.php">Administrar Rastreador</a></li>
             <li class="current_page_item"><a href="empresas.php">Empresas</a></li>
 
             </ul>
@@ -58,7 +52,7 @@ Released   : 20090927
                 </div>
                 <!-- Tabla que muestra los registros de la base de datos -->
 
-        <?php require_once('db_conexion.php'); //importamos el archivo de conexión 
+        <?php require_once('../db_conexion.php'); //importamos el archivo de conexión 
         $result = mysqli_query($con,"select * FROM tienda 
                 INNER JOIN imagen_empresa_validacion ON id_tienda = imagen_empresa_validacion.tienda_id_tienda
                 where estado_tienda = 'Pendiente' or estado_tienda = 'Rechazada' ");//Realizamos la seccion de todos los registros de empresa y sus imagenes.

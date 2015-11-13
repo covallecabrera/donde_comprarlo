@@ -1,8 +1,8 @@
 <?php
 		
 
-require_once 'db_conexion.php';
-require 'rutas.php';
+require_once '../db_conexion.php';
+require '../rutas.php';
 		$nombre = $_POST["nombre"];
         $subcategoria = $_POST['id_sub_categoria'];
         $descripcion = $_POST["descripcion"];

@@ -1,6 +1,6 @@
 <?php
 
-require_once 'db_conexion.php';
+require_once '../db_conexion.php';
 
 
         $subcategoria = $_POST['subcategoria'];

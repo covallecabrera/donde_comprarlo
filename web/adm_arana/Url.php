@@ -16,14 +16,8 @@ Released   : 20090927
         <title>Donde Comprarlo</title>
         <meta name="keywords" content="" />
         <meta name="description" content="" />
-        <link href="default.css" rel="stylesheet" type="text/css" media="screen" />
-        <script> 
-        function abrir(){
-            open('Popup.php', '', 'top=300,left=300,width=200,height=50');
-        } 
-        
-        
-        </script>
+        <link href="../default.css" rel="stylesheet" type="text/css" media="screen" />
+
       
     </head>
     <body>
@@ -37,11 +31,11 @@ Released   : 20090927
             </div>
             <div id="menu">
                 <ul>
-            <li><a href="index.php">Inicio</a></li>
+            <li><a href="../../index.php">Inicio</a></li>
             <li class="current_page_item"><a href="url.php">Ingresar URL</a></li>
             <li><a href="Productos.php">Productos</a></li>
             <li><a href="categoriaMarca.php">Administrar Rastreador</a></li>
-            <li><a href="empresas.php">Empresas</a></li>
+            <li><a href="../adm_empresas/empresas.php">Empresas</a></li>
 
 
                 </ul>
@@ -56,9 +50,9 @@ Released   : 20090927
                     <div class="title">
                         <h1>Ingreso URL</h1>
                     </div>
-                    <div class="entry"> <img src="images/url1.jpg" alt="" width="150" height="150" class="right" />
+                    <div class="entry"> <img src="../images/url1.jpg" alt="" width="150" height="150" class="right" />
                         <h2><p align="center">Ingrese URL a rastrear</p></h2>
-                        <form enctype="multipart/form-data" action="redireccionArana.php" method="get" name="ingreso" target="_self">
+                        <form enctype="multipart/form-data" action="../arana/redireccionArana.php" method="get" name="ingreso" target="_self">
                             <table align="center">
                             <p align="center">URL: <input type="text" name="url"  /></p>
                             <p align="center"><input type="submit" value="Ingresar URL" /></p>

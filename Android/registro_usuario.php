@@ -3,7 +3,7 @@
 /*
  * Following code will list all the products
  */
-  require('PHPMailerAutoload.php');
+  require('../PHPMailerAutoload.php');
 // array for JSON response
     $response = array();
 
@@ -21,18 +21,18 @@
       $mail->IsSMTP();
       $mail->SMTPAuth = true;
       $mail->SMTPSecure = 'tls';
-      $mail->Host = "mail.donde-comprarlo.com"; // SMTP a utilizar. Por ej. smtp.elserver.com
-      $mail->Username = "administrador@donde-comprarlo.com"; // Correo completo a utilizar
-      $mail->Password = "misisipi2471"; // Contraseña
+      $mail->Host = "smtp.live.com"; // SMTP a utilizar. Por ej. smtp.elserver.com
+      $mail->Username = "facoovalle@hotmail.es"; // Correo completo a utilizar
+      $mail->Password = "misisipi.247111"; // Contraseña
       $mail->Port = 587; // Puerto a utilizar
-      $mail->From = "administrador@donde-comprarlo.com"; // Desde donde enviamos (Para mostrar)
+      $mail->From = "facoovalle@hotmail.es"; // Desde donde enviamos (Para mostrar)
       $mail->FromName = "Administrador";
       $mail->AddAddress($correo); // Esta es la dirección a donde enviamos
     //  $mail->AddCC($correo); // Copia
       //$mail->AddBCC("cuenta@dominio.com"); // Copia oculta
       $mail->IsHTML(true); // El correo se envía como HTML
       $mail->Subject = "Registro Exitoso en Donde Comprarlo "; // Este es el titulo del email.
-      $body = "Estimado ".$nombre . ", se ha registrado correctmente en Donde Comprarlo. ";
+      $body = "Estimado ".$nombre . ", se ha registrado correctamente en Donde Comprarlo. ";
       //$body .= "/n Acá continuo el <strong>mensaje</strong>";
       $mail->Body = $body; // Mensaje a enviar
       //$mail->AltBody = "Hola mundo. Esta es la primer línean. Acá continuo el mensaje";//Texto sin html

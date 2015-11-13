@@ -1,5 +1,5 @@
 <?php
-require_once 'db_conexion.php';
+require_once '../db_conexion.php';
 if ((isset($_POST['Eliminar'])) && ($_POST['Eliminar'] != '')) {
 $dato=htmlspecialchars($_POST['Eliminar']);
 mysqli_query($con, "Delete from tienda_has_productos Where productos_id_productos='" . $dato . "' ");

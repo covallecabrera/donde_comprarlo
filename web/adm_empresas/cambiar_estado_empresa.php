@@ -14,8 +14,8 @@ and open the template in the editor.
 </html>
 
 <?php
-require_once('db_conexion.php');
-require("../PHPMailerAutoload.php");
+require_once('../db_conexion.php');
+require("../../PHPMailerAutoload.php");
 require('generar_contrasena.php');
 
 	$id_empresa = $_GET['id'];

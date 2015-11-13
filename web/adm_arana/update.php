@@ -16,7 +16,7 @@ Released   : 20090927
         <title>Donde Comprarlo</title>
         <meta name="keywords" content="" />
         <meta name="description" content="" />
-        <link href="default.css" rel="stylesheet" type="text/css" media="screen" />
+        <link href="../default.css" rel="stylesheet" type="text/css" media="screen" />
 
     </head>
     <body>
@@ -28,16 +28,16 @@ Released   : 20090927
             </div>
             <div id="menu">
                 <ul>
-            <li><a href="ingreso_administrador.php">Inicio</a></li>
+            <li><a href="../../index.php">Inicio</a></li>
             <li><a href="url.php">Ingresar URL</a></li>
             <li class="current_page_item"><a href="Productos.php">Productos</a></li>
             <li><a href="categoriaMarca.php">Agregar categoria o marca</a></li>
-            <li><a href="empresas.php">Empresas</a></li>
+            <li><a href="../adm_empresas/empresas.php">Empresas</a></li>
                 </ul>
             </div>
         </div>
         <?php
-        require_once ('db_conexion.php');
+        require_once ('../db_conexion.php');
         $produId = htmlspecialchars($_POST['productoId']);
         $nombre = htmlspecialchars($_POST['productoNombre']);
         $descricion = htmlspecialchars($_POST['productoDescripcion']);

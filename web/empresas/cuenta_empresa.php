@@ -62,7 +62,7 @@
                         <li><a href="ingreso_producto_empresa.php?rut_empresa=<?php echo $rut_empresa ;?>">Agregar Productos</a></li>
                         <li><a href="administrar_producto_empresa.php?rut_empresa=<?php echo $rut_empresa ;?>">Administrar Productos</a></li>
                         <li><a href="modificar_cuenta_empresa.php?rut_empresa=<?php echo $rut_empresa ;?>">Modificar Cuenta</a></li>
-                        <li><a href="../index.php">Cerrar Sesión</a></li>
+                        <li><a href="../../index.php">Cerrar Sesión</a></li>
 
                     </ul>
                 </div>
@@ -98,7 +98,7 @@
                         <li><a href="ingreso_producto_empresa.php?rut_empresa=<?php echo $rut_empresa ;?>">Agregar Productos</a></li>
                         <li><a href="administrar_producto_empresa.php?rut_empresa=<?php echo $rut_empresa ;?>">Administrar Productos</a></li>
                         <li><a href="modificar_cuenta_empresa.php?rut_empresa=<?php echo $rut_empresa ;?>">Modificar Cuenta</a></li>
-                        <li><a href="../index.php">Cerrar Sesión</a></li>
+                        <li><a href="../../index.php">Cerrar Sesión</a></li>
                         </ul>
                     </div>
                 </div>

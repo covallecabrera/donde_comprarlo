@@ -1,5 +1,5 @@
 <?php
-require_once('db_conexion.php'); //importamos el archivo de conexión
+require_once('../db_conexion.php'); //importamos el archivo de conexión
 //Funcion para recuperar el mime
 function fObtenerMime($wfParamCadena){//creamos una función que recibira un parametro en este caso la extensión del archivo
     $fsExtension = $wfParamCadena;	

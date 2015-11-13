@@ -1,13 +1,14 @@
 <?php
 
 require_once ('Conexion.php');
-require_once ('db_conexion.php'); 
+require_once ('../db_conexion.php'); 
 require_once ('simple_html_dom.php');
 
 
 set_time_limit(2000);
 
 $url = $_POST['url'];
+$id_tienda = $_POST['idtienda'];
 
 //$url = 'http://www.ripley.cl/ripley-chile/moda/calzado-mujer/botas-y-botines';
 // si servidor tiene en php.ini permiso allow_url_fopen = On  entonces usar file_get_html
@@ -38,7 +39,7 @@ for ($k = 0; $k < $cantidad; $k++) {
     $marca[$k] = tomaMarca($url,$con);
     $descricion[$k] = tomaDescripcion($url,$con,$marca[$k]);
     $categoria[$k] = tomaCategoria($url,$con);
-    $sucursal[$k] = "1";
+    $sucursal[$k] = $id_tienda;
 }
 
  $respuesta = ingreso($nombre, $precio, $imagenes, $descricion, $categoria, $marca, $sucursal, $cantidad, $con);

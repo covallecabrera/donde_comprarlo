@@ -1,7 +1,7 @@
 <?php
 
 require_once ('Conexion.php');
-require_once ('db_conexion.php'); 
+require_once ('../db_conexion.php'); 
 require_once ('simple_html_dom.php');
 
 

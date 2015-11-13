@@ -22,7 +22,7 @@ class DB_CONNECT {
      */
     function connect() {
         // import database connection variables
-        require_once 'db_config.php';
+        require_once '../web/db_config.php';
         // Connecting to mysql database
         $con = mysql_connect(DB_SERVER, DB_USER, DB_PASSWORD) or die("error: ".mysql_error());
 	 // Selecing database

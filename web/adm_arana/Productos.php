@@ -16,21 +16,14 @@ Released   : 20090927
         <title>Donde Comprarlo</title>
         <meta name="keywords" content="" />
         <meta name="description" content="" />
-        <link href="default.css" rel="stylesheet" type="text/css" media="screen" />
+        <link href="../default.css" rel="stylesheet" type="text/css" media="screen" />
 
     </head>
     <body>
         <!-- start header -->
-<script type="text/javascript">
-                // window.history.back();
-                function refrescar(){
-                    window.location.replace(document.referrer);
-                }
-                
-            </script>
 
         <?php
-        require_once ('db_conexion.php');
+        require_once ('../db_conexion.php');
 
         $result = mysqli_query($con, "Select * from productos where estado_producto = 0"); //Realizamos la seccion de todos los registros de la tabla de las imagenes.
         
@@ -44,11 +37,11 @@ Released   : 20090927
             </div>
             <div id="menu">
                 <ul>
-            <li><a href="index.php">Inicio</a></li>
+            <li><a href="../../index.php">Inicio</a></li>
             <li><a href="url.php">Ingresar URL</a></li>
             <li class="current_page_item"><a href="Productos.php">Productos</a></li>
             <li><a href="categoriaMarca.php">Administrar Rastreador</a></li>
-            <li><a href="empresas.php">Empresas</a></li>
+            <li><a href="../adm_empresas/empresas.php">Empresas</a></li>
 
                 </ul>
             </div>

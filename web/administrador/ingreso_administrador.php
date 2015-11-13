@@ -17,13 +17,6 @@ Released   : 20090927
         <meta name="keywords" content="" />
         <meta name="description" content="" />
         <link href="../default.css" rel="stylesheet" type="text/css" media="screen" />
-        <script> 
-        function abrir(){
-            open('Popup.php', '', 'top=300,left=300,width=200,height=50');
-        } 
-        
-        
-        </script>
       
     </head>
     <body>
@@ -60,10 +53,10 @@ Released   : 20090927
             <div id="menu">
                 <ul>
             <li class="current_page_item"><a href="ingreso_administrador.php">Inicio</a></li>
-            <li><a href="../url.php">Ingresar URL</a></li>
-            <li><a href="../Productos.php">Productos</a></li>
-            <li><a href="../categoriaMarca.php">Administrar Rastreador</a></li>
-            <li><a href="../empresas.php">Empresas</a></li>
+            <li><a href="../adm_arana/url.php">Ingresar URL</a></li>
+            <li><a href="../adm_arana/Productos.php">Productos</a></li>
+            <li><a href="../adm_arana/categoriaMarca.php">Administrar Rastreador</a></li>
+            <li><a href="../adm_empresas/empresas.php">Empresas</a></li>
 
                 </ul>
             </div>
@@ -96,10 +89,10 @@ Released   : 20090927
                 </div>
                 <div class="content">
                     <ul>
-                        <li><a href="../url.php">Ingresar URL</a></li>
-                        <li><a href="../Productos.php">Productos</a></li>
-                        <li><a href="../categoriaMarca.php">Agregar categoria o marca</a></li>
-                        <li><a href="../empresas.php">Empresas</a></li>
+                        <li><a href="../adm_arana/url.php">Ingresar URL</a></li>
+                        <li><a href="../adm_arana/Productos.php">Productos</a></li>
+                        <li><a href="../adm_arana/categoriaMarca.php">Administrar Rastreador</a></li>
+                        <li><a href="../adm_empresas/empresas.php">Empresas</a></li>
                     </ul>
                 </div>
             </div>

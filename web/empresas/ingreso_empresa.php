@@ -17,13 +17,7 @@ Released   : 20090927
         <meta name="keywords" content="" />
         <meta name="description" content="" />
         <link href="../default.css" rel="stylesheet" type="text/css" media="screen" />
-        <script> 
-        function abrir(){
-            open('Popup.php', '', 'top=300,left=300,width=200,height=50');
-        } 
-        
-        
-        </script>
+
       
     </head>
     <body>
@@ -37,7 +31,7 @@ Released   : 20090927
             </div>
             <div id="menu">
                 <ul>
-                    <li><a href="../index.php">Inicio</a></li>
+                    <li><a href="../../index.php">Inicio</a></li>
                     <li ><a href="correo_confirmacion.php">Registro Empresa</a></li>
                     <li class="current_page_item"><a href="#">Ingreso Empresa</a></li>
                     <li><a href="#">Contacto</a></li>

@@ -1,6 +1,6 @@
 <?php
 
-require_once 'db_conexion.php';
+require_once '../db_conexion.php';
 
         $sitio = strtolower($_POST['sitio']);
         $flag = 0;
@@ -10,7 +10,7 @@ require_once 'db_conexion.php';
 			      // move_uploaded_file($_FILES["script"]["tmp_name"],
 			      // $target_path . $_FILES["script"];
 
-				$target_path = "";
+				$target_path = "../arana/";
 				$target_path = $target_path . basename( $_FILES['script']['name']); if(move_uploaded_file($_FILES['script']['tmp_name'], $target_path)) { echo "El archivo ". basename( $_FILES['script']['name']). " ha sido subido";
 				} else{
 					echo "Ha ocurrido un error, trate de nuevo!";

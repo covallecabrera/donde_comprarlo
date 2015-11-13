@@ -16,14 +16,8 @@ Released   : 20090927
     <title>Donde Comprarlo</title>
     <meta name="keywords" content="" />
     <meta name="description" content="" />
-    <link href="default.css" rel="stylesheet" type="text/css" media="screen" />
-    <script> 
-    function abrir(){
-        open('Popup.php', '', 'top=300,left=300,width=200,height=50');
-    } 
+    <link href="../default.css" rel="stylesheet" type="text/css" media="screen" />
 
-
-    </script>
 
 </head>
 <body>
@@ -37,10 +31,10 @@ Released   : 20090927
         </div>
         <div id="menu">
             <ul>
-            <li><a href="index.php">Inicio</a></li>
-            <li><a href="url.php">Ingresar URL</a></li>
-            <li><a href="Productos.php">Productos</a></li>
-            <li><a href="categoriaMarca.php">Administrar Rastreador</a></li>
+            <li><a href="../../index.php">Inicio</a></li>
+            <li><a href="../adm_arana/url.php">Ingresar URL</a></li>
+            <li><a href="../adm_arana/Productos.php">Productos</a></li>
+            <li><a href="../adm_arana/categoriaMarca.php">Administrar Rastreador</a></li>
             <li class="current_page_item"><a href="empresas.php">Empresas</a></li>
 
             </ul>
@@ -54,25 +48,24 @@ Released   : 20090927
         <div id="content">
             <div class="post greenbox">
                 <div class="title">
-                    <h1 id="hola">Log Correos</h1>
+                    <h1 id="hola">Empresa</h1>
                 </div>
                 <!-- Tabla que muestra los registros de la base de datos -->
 
-        <?php require_once('db_conexion.php'); //importamos el archivo de conexión 
-            $id_empresa = $_GET['id'];
-        $result = mysqli_query($con,"select * FROM tienda 
-                INNER JOIN log_correo_empresa ON tienda.id_tienda = log_correo_empresa.tienda_id_tienda
-                where id_tienda = '".$id_empresa."' ");//Realizamos la seccion de todos los registros de empresa y sus imagenes.
+        <?php require_once('../db_conexion.php'); //importamos el archivo de conexión 
+        $result = mysqli_query($con,"select  * FROM tienda 
+                INNER JOIN imagen_empresa_validacion ON tienda.id_tienda = imagen_empresa_validacion.tienda_id_tienda where tienda.estado_tienda <> ''");//Realizamos la seccion de todos los registros de empresa y sus imagenes.
 
                 ?>
 
                 <table align="center" width="500px" border="1" style="border-collapse:collapse;">
                     <tr>
-                        <th>Nombre Empresa</th>
-                        <th>Fecha Correo</th>
-                        <th>Tipo Correo</th>
-                        <th>Estado Correo</th>
-
+                        <th>Nombre</th>
+                        <th>Rut</th>
+                        <th>Direccion</th>
+                        <th>Correo</th>
+                        <th>Estado Validación</th>
+                        <th>Log Correos</th>
 
                     </tr>
 
@@ -82,10 +75,11 @@ Released   : 20090927
                         ?>
                         <tr>            
                             <td><?php  echo $row['nombre_tienda'] ?></td>
-                            <td><?php  echo $row['log_correo'] ?></td>
-                            <td><?php  echo $row['tipo_correo'] ?></td>
-                            <td><?php  echo $row['estado_correo'] ?></td>
-
+                            <td><?php  echo $row['rut_tienda'] ?></td>
+                            <td><?php  echo $row['direccion_tienda'] ?></td>
+                            <td><?php  echo $row['correo_tienda'] ?></td>
+                            <td><?php  echo $row['estado_tienda'] ?></td>
+                            <td><a href="log_empresas.php?id=<?php echo $row['id_tienda'] ?>">Ver Log Empresa</a></td> 
 
                         </tr>
             <?php } //Fin del Ciclo
@@ -94,12 +88,11 @@ Released   : 20090927
             </table>
 
             <!-- Fin de la tabla -->
-
-            <form>
+            <form method="get" action="validar_empresa.php">
                             
-             <input type="button" value="Volver Atrás" name="volver atrás2" onclick="history.back()" />
+             <input type="submit" value="Validar Empresas" name="validar empresas" />
                             
             </form>
                         
-    </body>
+</body>
 </html>
