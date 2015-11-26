@@ -116,7 +116,7 @@ Released   : 20090927
             <div id="content">
                 <div class="post greenbox">
                     <div class="title">
-                        <h1>Categoria</h1>
+                        <h1>Nuevo Sitio / Script</h1>
                     </div>
                     <div class="entry"> <img src="../images/url1.jpg" alt="" width="150" height="150" class="right" />
                         <h2><p align="center">Nuevo Sitio</p></h2>

@@ -40,7 +40,7 @@ Released   : 20090927
             <li><a href="../../index.php">Inicio</a></li>
             <li><a href="../adm_arana/url.php">Ingresar URL</a></li>
             <li><a href="../adm_arana/Productos.php">Productos</a></li>
-            <li class="current_page_item"><a href="../categoriaMarca.php">Administrar Rastreador</a></li>
+            <li class="current_page_item"><a href="../adm_arana/categoriaMarca.php">Administrar Rastreador</a></li>
             <li><a href="../adm_empresas/empresas.php">Empresas</a></li>
 
                 </ul>
@@ -85,7 +85,7 @@ Released   : 20090927
                                 <td><?php echo $row['tipo'];?> </td>
                                 <td><a href="administrarEjecucionArana.php?accion=eliminar&id=<?php echo $row['id_automatizacion_arana'] ?>">Eliminar</a></td> 
                                 <td><a href="administrarEjecucionArana.php?accion=detener&id=<?php echo $row['id_automatizacion_arana'] ?>">Detener</a></td> 
-                                <td><a href="../redireccionArana.php?url=<?php echo $row['url_rastreo'] ?>">Ejecutar</a></td> 
+                                <td><a href="../arana/redireccionArana.php?url=<?php echo $row['url_rastreo'] ?>">Ejecutar</a></td> 
                             </tr>
                             <?php
                         } //Fin del Ciclo

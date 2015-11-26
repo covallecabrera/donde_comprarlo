@@ -74,7 +74,7 @@ Released   : 20090927
                 <br>
                 <div class="post greenbox">
                     <div class="title">
-                        <h1>Producto</h1>
+                        <h1>Parametros Tienda</h1>
                     </div>
                     <div class="entry"> <img src="../images/nuevo_producto.gif" alt="" width="150" height="150" class="right" />
                         <h2><p align="center">Nueva Parametrización para tienda <?php echo $nombre_empresa; ?></p></h2>
@@ -94,7 +94,7 @@ Released   : 20090927
                             <p align="left"style="margin-left:180px;"><input type="submit" value="Guardar Cambios" /></p>
                             </table>                            
                         </form>
-
+                        <a href="../xslt/ingresoUrl.html"> Ver Transformación XSLT </a>
 
                         <br></br>
 

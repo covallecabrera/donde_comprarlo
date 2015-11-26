@@ -1,7 +1,5 @@
 <?php
 
-
-
 function ingreso($nombre, $precio, $imagenes, $descricion, $categoria, $marca, $sucursal, $cantidad,$con) {
 
     for ($k = 0; $k < $cantidad; $k++) {
