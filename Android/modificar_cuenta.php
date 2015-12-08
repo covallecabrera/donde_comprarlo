@@ -17,9 +17,10 @@
     $correo=$_GET["correo"];
     $nombre=$_GET["nombre"];
     $contrasena = $_GET["contrasena"];
+    $id = $_GET["id_usuario"];
 
-    mysql_query("INSERT INTO usuario (nombre_usuario,contrasena_usuario,correo_usuario) 
-      VALUES ('".$nombre."', '".$contrasena."' , '".$correo."')") or die(mysql_error());
+    mysql_query("UPDATE usuario SET nombre_usuario='".$nombre."',contrasena_usuario='".$contrasena."'
+      ,correo_usuario='".$correo."' WHERE id_usuario = '".$id."' ") or die(mysql_error());
 
     $mail = new PHPMailer();
 
@@ -42,8 +43,8 @@
     //  $mail->AddCC($correo); // Copia
       //$mail->AddBCC("cuenta@dominio.com"); // Copia oculta
       $mail->IsHTML(true); // El correo se envía como HTML
-      $mail->Subject = "Registro Exitoso en Donde Comprarlo "; // Este es el titulo del email.
-      $body = "Estimado ".$nombre . ", se ha registrado correctamente en Donde Comprarlo. ";
+      $mail->Subject = "Su cuenta ha sido modificada correctamente en Donde Comprarlo "; // Este es el titulo del email.
+      $body = "Estimado ".$nombre . ", se ha modificado correctamente su cuenta en Donde Comprarlo. ";
       //$body .= "/n Acá continuo el <strong>mensaje</strong>";
       $mail->Body = $body; // Mensaje a enviar
       //$mail->AltBody = "Hola mundo. Esta es la primer línean. Acá continuo el mensaje";//Texto sin html
